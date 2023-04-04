@@ -1,31 +1,75 @@
-- [数字和字符串](#数字和字符串)
-  - [剑指 Offer 04. 二维数组中的查找](#剑指-offer-04-二维数组中的查找)
-  - [剑指 Offer 05. 替换空格](#剑指-offer-05-替换空格)
-  - [剑指 Offer 11. 旋转数组的最小数字](#剑指-offer-11-旋转数组的最小数字)
-  - [剑指 Offer 17. 打印从1到最大的n位数](#剑指-offer-17-打印从1到最大的n位数)
-  - [剑指 Offer 21. 调整数组顺序使奇数位于偶数前面](#剑指-offer-21-调整数组顺序使奇数位于偶数前面)
-  - [剑指 Offer 29. 顺时针打印矩阵](#剑指-offer-29-顺时针打印矩阵)
-  - [剑指 Offer 39. 数组中出现次数超过一半的数字](#剑指-offer-39-数组中出现次数超过一半的数字)
-  - [面试题45. 把数组排成最小的数](#面试题45-把数组排成最小的数)
-  - [剑指 Offer 53 - I. 在排序数组中查找数字 I](#剑指-offer-53---i-在排序数组中查找数字-i)
-  - [剑指 Offer 53 - II. 0～n-1中缺失的数字](#剑指-offer-53---ii-0n-1中缺失的数字)
-  - [剑指 Offer 57. 和为s的两个数字](#剑指-offer-57-和为s的两个数字)
-  - [剑指 Offer 58 - I. 翻转单词顺序](#剑指-offer-58---i-翻转单词顺序)
-  - [剑指 Offer 58 - II. 左旋转字符串](#剑指-offer-58---ii-左旋转字符串)
-  - [面试题61. 扑克牌中的顺子](#面试题61-扑克牌中的顺子)
-  - [剑指 Offer 66. 构建乘积数组](#剑指-offer-66-构建乘积数组)
-  - [面试题67. 把字符串转换成整数](#面试题67-把字符串转换成整数)
-- [栈和队列](#栈和队列)
-- [哈希表](#哈希表)
-- [链表](#链表)
-- [DFS](#dfs)
-- [BFS](#bfs)
-- [动态规划](#动态规划)
-- [树](#树)
-- [位运算](#位运算)
-- [递归](#递归)
-- [数学](#数学)
+- [剑指offer(59)](#剑指offer59)
+  - [数字和字符串 (16)](#数字和字符串-16)
+    - [剑指 Offer 04. 二维数组中的查找](#剑指-offer-04-二维数组中的查找)
+    - [剑指 Offer 05. 替换空格](#剑指-offer-05-替换空格)
+    - [剑指 Offer 11. 旋转数组的最小数字](#剑指-offer-11-旋转数组的最小数字)
+    - [剑指 Offer 17. 打印从1到最大的n位数](#剑指-offer-17-打印从1到最大的n位数)
+    - [剑指 Offer 21. 调整数组顺序使奇数位于偶数前面](#剑指-offer-21-调整数组顺序使奇数位于偶数前面)
+    - [剑指 Offer 29. 顺时针打印矩阵](#剑指-offer-29-顺时针打印矩阵)
+    - [剑指 Offer 39. 数组中出现次数超过一半的数字](#剑指-offer-39-数组中出现次数超过一半的数字)
+    - [面试题45. 把数组排成最小的数](#面试题45-把数组排成最小的数)
+    - [剑指 Offer 53 - I. 在排序数组中查找数字 I](#剑指-offer-53---i-在排序数组中查找数字-i)
+    - [剑指 Offer 53 - II. 0～n-1中缺失的数字](#剑指-offer-53---ii-0n-1中缺失的数字)
+    - [剑指 Offer 57. 和为s的两个数字](#剑指-offer-57-和为s的两个数字)
+    - [剑指 Offer 58 - I. 翻转单词顺序](#剑指-offer-58---i-翻转单词顺序)
+    - [剑指 Offer 58 - II. 左旋转字符串](#剑指-offer-58---ii-左旋转字符串)
+    - [面试题61. 扑克牌中的顺子](#面试题61-扑克牌中的顺子)
+    - [剑指 Offer 66. 构建乘积数组](#剑指-offer-66-构建乘积数组)
+    - [面试题67. 把字符串转换成整数](#面试题67-把字符串转换成整数)
+  - [栈和队列(5)](#栈和队列5)
+    - [剑指 Offer 06. 从尾到头打印链表](#剑指-offer-06-从尾到头打印链表)
+    - [剑指 Offer 09. 用两个栈实现队列](#剑指-offer-09-用两个栈实现队列)
+    - [剑指 Offer 30. 包含min函数的栈](#剑指-offer-30-包含min函数的栈)
+    - [剑指 Offer 59 - I. 滑动窗口的最大值](#剑指-offer-59---i-滑动窗口的最大值)
+    - [面试题59 - II. 队列的最大值](#面试题59---ii-队列的最大值)
+  - [哈希表(3)](#哈希表3)
+    - [剑指 Offer 03. 数组中重复的数字](#剑指-offer-03-数组中重复的数字)
+    - [剑指 Offer 48. 最长不含重复字符的子字符串](#剑指-offer-48-最长不含重复字符的子字符串)
+    - [剑指 Offer 50. 第一个只出现一次的字符](#剑指-offer-50-第一个只出现一次的字符)
+  - [链表(5)](#链表5)
+    - [剑指 Offer 18. 删除链表的节点](#剑指-offer-18-删除链表的节点)
+    - [剑指 Offer 22. 链表中倒数第k个节点](#剑指-offer-22-链表中倒数第k个节点)
+    - [剑指 Offer 24. 反转链表](#剑指-offer-24-反转链表)
+    - [剑指 Offer 25. 合并两个排序的链表](#剑指-offer-25-合并两个排序的链表)
+    - [剑指 Offer 52. 两个链表的第一个公共节点](#剑指-offer-52-两个链表的第一个公共节点)
+  - [DFS(7)](#dfs7)
+    - [剑指 Offer 12. 矩阵中的路径](#剑指-offer-12-矩阵中的路径)
+    - [面试题13. 机器人的运动范围](#面试题13-机器人的运动范围)
+    - [剑指 Offer 27. 二叉树的镜像](#剑指-offer-27-二叉树的镜像)
+    - [剑指 Offer 28. 对称的二叉树](#剑指-offer-28-对称的二叉树)
+    - [剑指 Offer 54. 二叉搜索树的第k大节点](#剑指-offer-54-二叉搜索树的第k大节点)
+    - [剑指 Offer 55 - I. 二叉树的深度](#剑指-offer-55---i-二叉树的深度)
+    - [剑指 Offer 55 - II. 平衡二叉树](#剑指-offer-55---ii-平衡二叉树)
+  - [BFS(3)](#bfs3)
+    - [剑指 Offer 32 - I. 从上到下打印二叉树](#剑指-offer-32---i-从上到下打印二叉树)
+    - [剑指 Offer 32 - II. 从上到下打印二叉树 II](#剑指-offer-32---ii-从上到下打印二叉树-ii)
+    - [剑指 Offer 32 - III. 从上到下打印二叉树 III](#剑指-offer-32---iii-从上到下打印二叉树-iii)
+  - [动态规划(10)](#动态规划10)
+    - [剑指 Offer 10- I. 斐波那契数列](#剑指-offer-10--i-斐波那契数列)
+    - [剑指 Offer 10- II. 青蛙跳台阶问题](#剑指-offer-10--ii-青蛙跳台阶问题)
+    - [剑指 Offer 42. 连续子数组的最大和](#剑指-offer-42-连续子数组的最大和)
+    - [剑指 Offer 46. 把数字翻译成字符串](#剑指-offer-46-把数字翻译成字符串)
+    - [剑指 Offer 47. 礼物的最大价值](#剑指-offer-47-礼物的最大价值)
+    - [剑指 Offer 49. 丑数](#剑指-offer-49-丑数)
+    - [剑指 Offer 62. 圆圈中最后剩下的数字](#剑指-offer-62-圆圈中最后剩下的数字)
+    - [剑指 Offer 63. 股票的最大利润](#剑指-offer-63-股票的最大利润)
+  - [树(2)](#树2)
+    - [剑指 Offer 68 - I. 二叉搜索树的最近公共祖先](#剑指-offer-68---i-二叉搜索树的最近公共祖先)
+    - [剑指 Offer 68 - II. 二叉树的最近公共祖先](#剑指-offer-68---ii-二叉树的最近公共祖先)
+  - [位运算(4)](#位运算4)
+    - [剑指 Offer 15. 二进制中1的个数](#剑指-offer-15-二进制中1的个数)
+    - [剑指 Offer 56 - I. 数组中数字出现的次数](#剑指-offer-56---i-数组中数字出现的次数)
+    - [剑指 Offer 56 - II. 数组中数字出现的次数 II](#剑指-offer-56---ii-数组中数字出现的次数-ii)
+    - [剑指 Offer 65. 不用加减乘除做加法](#剑指-offer-65-不用加减乘除做加法)
+  - [递归(3)](#递归3)
+    - [剑指 Offer 07. 重建二叉树](#剑指-offer-07-重建二叉树)
+    - [剑指 Offer 26. 树的子结构](#剑指-offer-26-树的子结构)
+    - [剑指 Offer 64. 求1+2+…+n](#剑指-offer-64-求12n)
+  - [数学(1)](#数学1)
+    - [剑指 Offer 44. 数字序列中某一位的数字](#剑指-offer-44-数字序列中某一位的数字)
 
+
+## 剑指offer(59)
 
 ### 数字和字符串 (16)
 
@@ -1444,34 +1488,1343 @@ class Solution {
 }
 ```
 
+### DFS(7)
+
+#### [剑指 Offer 12. 矩阵中的路径](https://leetcode.cn/problems/ju-zhen-zhong-de-lu-jing-lcof/)
+
+1
+
+```
+给定一个 m x n 二维字符网格 board 和一个字符串单词 word 。如果 word 存在于网格中，返回 true ；否则，返回 false 。
+
+单词必须按照字母顺序，通过相邻的单元格内的字母构成，其中“相邻”单元格是那些水平相邻或垂直相邻的单元格。同一个单元格内的字母不允许被重复使用。
+
+ 
+
+例如，在下面的 3×4 的矩阵中包含单词 "ABCCED"（单词中的字母已标出）。
+
+
+
+ 
+
+示例 1：
+
+输入：board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCCED"
+输出：true
+示例 2：
+
+输入：board = [["a","b"],["c","d"]], word = "abcd"
+输出：false
+ 
+
+提示：
+
+m == board.length
+n = board[i].length
+1 <= m, n <= 6
+1 <= word.length <= 15
+board 和 word 仅由大小写英文字母组成
+
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/ju-zhen-zhong-de-lu-jing-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+
+
+```JAVA
+class Solution {
+    public boolean exist(char[][] board, String word) {
+
+    }
+}
+```
+
+1
+
+#### [面试题13. 机器人的运动范围](https://leetcode.cn/problems/ji-qi-ren-de-yun-dong-fan-wei-lcof/)
+
+1
+
+```
+地上有一个m行n列的方格，从坐标 [0,0] 到坐标 [m-1,n-1] 。一个机器人从坐标 [0, 0] 的格子开始移动，它每次可以向左、右、上、下移动一格（不能移动到方格外），也不能进入行坐标和列坐标的数位之和大于k的格子。例如，当k为18时，机器人能够进入方格 [35, 37] ，因为3+5+3+7=18。但它不能进入方格 [35, 38]，因为3+5+3+8=19。请问该机器人能够到达多少个格子？
+
+ 
+
+示例 1：
+
+输入：m = 2, n = 3, k = 1
+输出：3
+示例 2：
+
+输入：m = 3, n = 1, k = 0
+输出：1
+提示：
+
+1 <= n,m <= 100
+0 <= k <= 20
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/ji-qi-ren-de-yun-dong-fan-wei-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+
+
+```JAVA
+class Solution {
+    public int movingCount(int m, int n, int k) {
+
+    }
+}
+```
+
+1
+
+#### [剑指 Offer 27. 二叉树的镜像](https://leetcode.cn/problems/er-cha-shu-de-jing-xiang-lcof/)
+
+
+
+1
+
+```
+请完成一个函数，输入一个二叉树，该函数输出它的镜像。
+
+例如输入：
+
+     4
+   /   \
+  2     7
+ / \   / \
+1   3 6   9
+镜像输出：
+
+     4
+   /   \
+  7     2
+ / \   / \
+9   6 3   1
+
+ 
+
+示例 1：
+
+输入：root = [4,2,7,1,3,6,9]
+输出：[4,7,2,9,6,3,1]
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/er-cha-shu-de-jing-xiang-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+
+
+```JAVA
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public TreeNode mirrorTree(TreeNode root) {
+
+    }
+}
+```
+
+1
+
+
+
+#### [剑指 Offer 28. 对称的二叉树](https://leetcode.cn/problems/dui-cheng-de-er-cha-shu-lcof/)
+
+1
+
+```
+请实现一个函数，用来判断一棵二叉树是不是对称的。如果一棵二叉树和它的镜像一样，那么它是对称的。
+
+例如，二叉树 [1,2,2,3,4,4,3] 是对称的。
+
+    1
+   / \
+  2   2
+ / \ / \
+3  4 4  3
+但是下面这个 [1,2,2,null,3,null,3] 则不是镜像对称的:
+
+    1
+   / \
+  2   2
+   \   \
+   3    3
+
+ 
+
+示例 1：
+
+输入：root = [1,2,2,3,4,4,3]
+输出：true
+示例 2：
+
+输入：root = [1,2,2,null,3,null,3]
+输出：false
+ 
+
+限制：
+
+0 <= 节点个数 <= 1000
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/dui-cheng-de-er-cha-shu-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+
+
+```JAVA
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public boolean isSymmetric(TreeNode root) {
+
+    }
+}
+```
+
+1
+
+#### [剑指 Offer 54. 二叉搜索树的第k大节点](https://leetcode.cn/problems/er-cha-sou-suo-shu-de-di-kda-jie-dian-lcof/)
+
+
+
+1
+
+```
+给定一棵二叉搜索树，请找出其中第 k 大的节点的值。
+
+ 
+
+示例 1:
+
+输入: root = [3,1,4,null,2], k = 1
+   3
+  / \
+ 1   4
+  \
+   2
+输出: 4
+示例 2:
+
+输入: root = [5,3,6,2,4,null,null,1], k = 3
+       5
+      / \
+     3   6
+    / \
+   2   4
+  /
+ 1
+输出: 4
+ 
+
+限制：
+
+1 ≤ k ≤ 二叉搜索树元素个数
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/er-cha-sou-suo-shu-de-di-kda-jie-dian-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+
+
+```JAVA
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public int kthLargest(TreeNode root, int k) {
+
+    }
+}
+```
+
+1
+
+#### [剑指 Offer 55 - I. 二叉树的深度](https://leetcode.cn/problems/er-cha-shu-de-shen-du-lcof/)
+
+1
+
+```
+输入一棵二叉树的根节点，求该树的深度。从根节点到叶节点依次经过的节点（含根、叶节点）形成树的一条路径，最长路径的长度为树的深度。
+
+例如：
+
+给定二叉树 [3,9,20,null,null,15,7]，
+
+    3
+   / \
+  9  20
+    /  \
+   15   7
+返回它的最大深度 3 。
+
+ 
+
+提示：
+
+节点总数 <= 10000
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/er-cha-shu-de-shen-du-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+
+
+```JAVA
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public int maxDepth(TreeNode root) {
+
+    }
+}
+```
+
+1
+
+#### [剑指 Offer 55 - II. 平衡二叉树](https://leetcode.cn/problems/ping-heng-er-cha-shu-lcof/)
+
+```
+输入一棵二叉树的根节点，判断该树是不是平衡二叉树。如果某二叉树中任意节点的左右子树的深度相差不超过1，那么它就是一棵平衡二叉树。
+
+ 
+
+示例 1:
+
+给定二叉树 [3,9,20,null,null,15,7]
+
+    3
+   / \
+  9  20
+    /  \
+   15   7
+返回 true 。
+
+示例 2:
+
+给定二叉树 [1,2,2,3,3,null,null,4,4]
+
+       1
+      / \
+     2   2
+    / \
+   3   3
+  / \
+ 4   4
+返回 false 。
+
+ 
+
+限制：
+
+0 <= 树的结点个数 <= 10000
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/ping-heng-er-cha-shu-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```JAVA
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public boolean isBalanced(TreeNode root) {
+
+    }
+}
+```
 
 
 
 
-### DFS
 
-{12，13，27，28，54，55}
+### BFS(3)
 
-### BFS
+#### [剑指 Offer 32 - I. 从上到下打印二叉树](https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-lcof/)
 
-{32}
+```
+从上到下打印出二叉树的每个节点，同一层的节点按照从左到右的顺序打印。
 
-### 动态规划
+ 
 
-{10，42，46，47，49，62，63}
+例如:
+给定二叉树: [3,9,20,null,null,15,7],
 
-### 树
+    3
+   / \
+  9  20
+    /  \
+   15   7
+返回：
 
-{68}
+[3,9,20,15,7]
+ 
 
-### 位运算
+提示：
 
-{15，16，56，65}
+节点总数 <= 1000
 
-### 递归
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
 
-{07，26，64}
 
-### 数学
 
-{44}
+```JAVA
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public int[] levelOrder(TreeNode root) {
+
+    }
+}
+```
+
+1
+
+
+
+#### [剑指 Offer 32 - II. 从上到下打印二叉树 II](https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-ii-lcof/)
+
+1
+
+```
+从上到下按层打印二叉树，同一层的节点按从左到右的顺序打印，每一层打印到一行。
+
+ 
+
+例如:
+给定二叉树: [3,9,20,null,null,15,7],
+
+    3
+   / \
+  9  20
+    /  \
+   15   7
+返回其层次遍历结果：
+
+[
+  [3],
+  [9,20],
+  [15,7]
+]
+ 
+
+提示：
+
+节点总数 <= 1000
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-ii-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```JAVA
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+
+    }
+}
+```
+
+1
+
+#### [剑指 Offer 32 - III. 从上到下打印二叉树 III](https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-iii-lcof/)
+
+```
+请实现一个函数按照之字形顺序打印二叉树，即第一行按照从左到右的顺序打印，第二层按照从右到左的顺序打印，第三行再按照从左到右的顺序打印，其他行以此类推。
+
+ 
+
+例如:
+给定二叉树: [3,9,20,null,null,15,7],
+
+    3
+   / \
+  9  20
+    /  \
+   15   7
+返回其层次遍历结果：
+
+[
+  [3],
+  [20,9],
+  [15,7]
+]
+ 
+
+提示：
+
+节点总数 <= 1000
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/cong-shang-dao-xia-da-yin-er-cha-shu-iii-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```JAVA
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+
+    }
+}
+```
+
+1
+
+
+
+### 动态规划(10)
+
+#### [剑指 Offer 10- I. 斐波那契数列](https://leetcode.cn/problems/fei-bo-na-qi-shu-lie-lcof/)
+
+```
+写一个函数，输入 n ，求斐波那契（Fibonacci）数列的第 n 项（即 F(N)）。斐波那契数列的定义如下：
+
+F(0) = 0,   F(1) = 1
+F(N) = F(N - 1) + F(N - 2), 其中 N > 1.
+斐波那契数列由 0 和 1 开始，之后的斐波那契数就是由之前的两数相加而得出。
+
+答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。
+
+ 
+
+示例 1：
+
+输入：n = 2
+输出：1
+示例 2：
+
+输入：n = 5
+输出：5
+ 
+
+提示：
+
+0 <= n <= 100
+
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/fei-bo-na-qi-shu-lie-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+1
+
+```java
+class Solution {
+    public int fib(int n) {
+
+    }
+}
+```
+
+1
+
+#### [剑指 Offer 10- II. 青蛙跳台阶问题](https://leetcode.cn/problems/qing-wa-tiao-tai-jie-wen-ti-lcof/)
+
+```
+一只青蛙一次可以跳上1级台阶，也可以跳上2级台阶。求该青蛙跳上一个 n 级的台阶总共有多少种跳法。
+
+答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。
+
+示例 1：
+
+输入：n = 2
+输出：2
+示例 2：
+
+输入：n = 7
+输出：21
+示例 3：
+
+输入：n = 0
+输出：1
+提示：
+
+0 <= n <= 100
+注意：本题与主站 70 题相同：https://leetcode-cn.com/problems/climbing-stairs/
+
+ 
+
+
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/qing-wa-tiao-tai-jie-wen-ti-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+1
+
+```java
+class Solution {
+    public int numWays(int n) {
+
+    }
+}
+```
+
+1
+
+#### [剑指 Offer 42. 连续子数组的最大和](https://leetcode.cn/problems/lian-xu-zi-shu-zu-de-zui-da-he-lcof/)
+
+```
+输入一个整型数组，数组中的一个或连续多个整数组成一个子数组。求所有子数组的和的最大值。
+
+要求时间复杂度为O(n)。
+
+ 
+
+示例1:
+
+输入: nums = [-2,1,-3,4,-1,2,1,-5,4]
+输出: 6
+解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。
+ 
+
+提示：
+
+1 <= arr.length <= 10^5
+-100 <= arr[i] <= 100
+注意：本题与主站 53 题相同：https://leetcode-cn.com/problems/maximum-subarray/
+
+
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/lian-xu-zi-shu-zu-de-zui-da-he-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+1
+
+```java
+class Solution {
+    public int maxSubArray(int[] nums) {
+
+    }
+}
+```
+
+1
+
+#### [剑指 Offer 46. 把数字翻译成字符串](https://leetcode.cn/problems/ba-shu-zi-fan-yi-cheng-zi-fu-chuan-lcof/)
+
+```
+给定一个数字，我们按照如下规则把它翻译为字符串：0 翻译成 “a” ，1 翻译成 “b”，……，11 翻译成 “l”，……，25 翻译成 “z”。一个数字可能有多个翻译。请编程实现一个函数，用来计算一个数字有多少种不同的翻译方法。
+
+ 
+
+示例 1:
+
+输入: 12258
+输出: 5
+解释: 12258有5种不同的翻译，分别是"bccfi", "bwfi", "bczi", "mcfi"和"mzi"
+ 
+
+提示：
+
+0 <= num < 231
+
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/ba-shu-zi-fan-yi-cheng-zi-fu-chuan-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+1
+
+```java
+class Solution {
+    public int translateNum(int num) {
+
+    }
+}
+```
+
+1
+
+#### [剑指 Offer 47. 礼物的最大价值](https://leetcode.cn/problems/li-wu-de-zui-da-jie-zhi-lcof/)
+
+```
+在一个 m*n 的棋盘的每一格都放有一个礼物，每个礼物都有一定的价值（价值大于 0）。你可以从棋盘的左上角开始拿格子里的礼物，并每次向右或者向下移动一格、直到到达棋盘的右下角。给定一个棋盘及其上面的礼物的价值，请计算你最多能拿到多少价值的礼物？
+
+ 
+
+示例 1:
+
+输入: 
+[
+  [1,3,1],
+  [1,5,1],
+  [4,2,1]
+]
+输出: 12
+解释: 路径 1→3→5→2→1 可以拿到最多价值的礼物
+ 
+
+提示：
+
+0 < grid.length <= 200
+0 < grid[0].length <= 200
+
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/li-wu-de-zui-da-jie-zhi-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+1
+
+```java
+class Solution {
+    public int maxValue(int[][] grid) {
+
+    }
+}
+```
+
+1
+
+#### [剑指 Offer 49. 丑数](https://leetcode.cn/problems/chou-shu-lcof/)
+
+```
+我们把只包含质因子 2、3 和 5 的数称作丑数（Ugly Number）。求按从小到大的顺序的第 n 个丑数。
+
+ 
+
+示例:
+
+输入: n = 10
+输出: 12
+解释: 1, 2, 3, 4, 5, 6, 8, 9, 10, 12 是前 10 个丑数。
+说明:  
+
+1 是丑数。
+n 不超过1690。
+注意：本题与主站 264 题相同：https://leetcode-cn.com/problems/ugly-number-ii/
+
+
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/chou-shu-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+1
+
+```java
+class Solution {
+    public int nthUglyNumber(int n) {
+
+    }
+}
+```
+
+1
+
+#### [剑指 Offer 62. 圆圈中最后剩下的数字](https://leetcode.cn/problems/yuan-quan-zhong-zui-hou-sheng-xia-de-shu-zi-lcof/)
+
+```
+0,1,···,n-1这n个数字排成一个圆圈，从数字0开始，每次从这个圆圈里删除第m个数字（删除后从下一个数字开始计数）。求出这个圆圈里剩下的最后一个数字。
+
+例如，0、1、2、3、4这5个数字组成一个圆圈，从数字0开始每次删除第3个数字，则删除的前4个数字依次是2、0、4、1，因此最后剩下的数字是3。
+
+ 
+
+示例 1：
+
+输入: n = 5, m = 3
+输出: 3
+示例 2：
+
+输入: n = 10, m = 17
+输出: 2
+ 
+
+限制：
+
+1 <= n <= 10^5
+1 <= m <= 10^6
+
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/yuan-quan-zhong-zui-hou-sheng-xia-de-shu-zi-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+1
+
+```java
+class Solution {
+    public int lastRemaining(int n, int m) {
+
+    }
+}
+```
+
+#### [剑指 Offer 63. 股票的最大利润](https://leetcode.cn/problems/gu-piao-de-zui-da-li-run-lcof/)
+
+```
+假设把某股票的价格按照时间先后顺序存储在数组中，请问买卖该股票一次可能获得的最大利润是多少？
+
+ 
+
+示例 1:
+
+输入: [7,1,5,3,6,4]
+输出: 5
+解释: 在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。
+     注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格。
+示例 2:
+
+输入: [7,6,4,3,1]
+输出: 0
+解释: 在这种情况下, 没有交易完成, 所以最大利润为 0。
+ 
+
+限制：
+
+0 <= 数组长度 <= 10^5
+
+ 
+
+注意：本题与主站 121 题相同：https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/
+
+
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/gu-piao-de-zui-da-li-run-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```JAVA
+class Solution {
+    public int maxProfit(int[] prices) {
+
+    }
+}
+```
+
+### 树(2)
+
+#### [剑指 Offer 68 - I. 二叉搜索树的最近公共祖先](https://leetcode.cn/problems/er-cha-sou-suo-shu-de-zui-jin-gong-gong-zu-xian-lcof/)
+
+```
+给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。
+
+百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”
+
+例如，给定如下二叉搜索树:  root = [6,2,8,0,4,7,9,null,null,3,5]
+
+
+
+ 
+
+示例 1:
+
+输入: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8
+输出: 6 
+解释: 节点 2 和节点 8 的最近公共祖先是 6。
+示例 2:
+
+输入: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4
+输出: 2
+解释: 节点 2 和节点 4 的最近公共祖先是 2, 因为根据定义最近公共祖先节点可以为节点本身。
+ 
+
+说明:
+
+所有节点的值都是唯一的。
+p、q 为不同节点且均存在于给定的二叉搜索树中。
+注意：本题与主站 235 题相同：https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
+
+
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/er-cha-sou-suo-shu-de-zui-jin-gong-gong-zu-xian-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```JAVA
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        
+    }
+}
+```
+
+#### [剑指 Offer 68 - II. 二叉树的最近公共祖先](https://leetcode.cn/problems/er-cha-shu-de-zui-jin-gong-gong-zu-xian-lcof/)
+
+```
+给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。
+
+百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”
+
+例如，给定如下二叉树:  root = [3,5,1,6,2,0,8,null,null,7,4]
+
+
+
+ 
+
+示例 1:
+
+输入: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
+输出: 3
+解释: 节点 5 和节点 1 的最近公共祖先是节点 3。
+示例 2:
+
+输入: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4
+输出: 5
+解释: 节点 5 和节点 4 的最近公共祖先是节点 5。因为根据定义最近公共祖先节点可以为节点本身。
+ 
+
+说明:
+
+所有节点的值都是唯一的。
+p、q 为不同节点且均存在于给定的二叉树中。
+注意：本题与主站 236 题相同：https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/
+
+
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/er-cha-shu-de-zui-jin-gong-gong-zu-xian-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```JAVA
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        
+    }
+}
+```
+
+
+
+### 位运算(4)
+
+#### [剑指 Offer 15. 二进制中1的个数](https://leetcode.cn/problems/er-jin-zhi-zhong-1de-ge-shu-lcof/)
+
+```
+编写一个函数，输入是一个无符号整数（以二进制串的形式），返回其二进制表达式中数字位数为 '1' 的个数（也被称为 汉明重量).）。
+
+ 
+
+提示：
+
+请注意，在某些语言（如 Java）中，没有无符号整数类型。在这种情况下，输入和输出都将被指定为有符号整数类型，并且不应影响您的实现，因为无论整数是有符号的还是无符号的，其内部的二进制表示形式都是相同的。
+在 Java 中，编译器使用 二进制补码 记法来表示有符号整数。因此，在上面的 示例 3 中，输入表示有符号整数 -3。
+ 
+
+示例 1：
+
+输入：n = 11 (控制台输入 00000000000000000000000000001011)
+输出：3
+解释：输入的二进制串 00000000000000000000000000001011 中，共有三位为 '1'。
+示例 2：
+
+输入：n = 128 (控制台输入 00000000000000000000000010000000)
+输出：1
+解释：输入的二进制串 00000000000000000000000010000000 中，共有一位为 '1'。
+示例 3：
+
+输入：n = 4294967293 (控制台输入 11111111111111111111111111111101，部分语言中 n = -3）
+输出：31
+解释：输入的二进制串 11111111111111111111111111111101 中，共有 31 位为 '1'。
+ 
+
+提示：
+
+输入必须是长度为 32 的 二进制串 。
+ 
+
+
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/er-jin-zhi-zhong-1de-ge-shu-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+public class Solution {
+    // you need to treat n as an unsigned value
+    public int hammingWeight(int n) {
+        
+    }
+}
+```
+
+#### [剑指 Offer 56 - I. 数组中数字出现的次数](https://leetcode.cn/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-lcof/)
+
+```
+一个整型数组 nums 里除两个数字之外，其他数字都出现了两次。请写程序找出这两个只出现一次的数字。要求时间复杂度是O(n)，空间复杂度是O(1)。
+
+ 
+
+示例 1：
+
+输入：nums = [4,1,4,6]
+输出：[1,6] 或 [6,1]
+示例 2：
+
+输入：nums = [1,2,10,4,1,4,3,3]
+输出：[2,10] 或 [10,2]
+ 
+
+限制：
+
+2 <= nums.length <= 10000
+ 
+
+
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public int[] singleNumbers(int[] nums) {
+
+    }
+}
+```
+
+#### [剑指 Offer 56 - II. 数组中数字出现的次数 II](https://leetcode.cn/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-ii-lcof/)
+
+```
+在一个数组 nums 中除一个数字只出现一次之外，其他数字都出现了三次。请找出那个只出现一次的数字。
+
+ 
+
+示例 1：
+
+输入：nums = [3,4,3,3]
+输出：4
+示例 2：
+
+输入：nums = [9,1,7,9,7,9,7]
+输出：1
+ 
+
+限制：
+
+1 <= nums.length <= 10000
+1 <= nums[i] < 2^31
+ 
+
+
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-ii-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public int singleNumber(int[] nums) {
+
+    }
+}
+```
+
+#### [剑指 Offer 65. 不用加减乘除做加法](https://leetcode.cn/problems/bu-yong-jia-jian-cheng-chu-zuo-jia-fa-lcof/)
+
+```
+写一个函数，求两个整数之和，要求在函数体内不得使用 “+”、“-”、“*”、“/” 四则运算符号。
+
+ 
+
+示例:
+
+输入: a = 1, b = 1
+输出: 2
+ 
+
+提示：
+
+a, b 均可能是负数或 0
+结果不会溢出 32 位整数
+
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/bu-yong-jia-jian-cheng-chu-zuo-jia-fa-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public int add(int a, int b) {
+
+    }
+}
+```
+
+
+
+### 递归(3)
+
+#### [剑指 Offer 07. 重建二叉树](https://leetcode.cn/problems/zhong-jian-er-cha-shu-lcof/)
+
+```
+输入某二叉树的前序遍历和中序遍历的结果，请构建该二叉树并返回其根节点。
+
+假设输入的前序遍历和中序遍历的结果中都不含重复的数字。
+
+ 
+
+示例 1:
+
+
+Input: preorder = [3,9,20,15,7], inorder = [9,3,15,20,7]
+Output: [3,9,20,null,null,15,7]
+示例 2:
+
+Input: preorder = [-1], inorder = [-1]
+Output: [-1]
+ 
+
+限制：
+
+0 <= 节点个数 <= 5000
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/zhong-jian-er-cha-shu-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```JAVA
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+
+    }
+}
+```
+
+#### [剑指 Offer 26. 树的子结构](https://leetcode.cn/problems/shu-de-zi-jie-gou-lcof/)
+
+```
+输入两棵二叉树A和B，判断B是不是A的子结构。(约定空树不是任意一个树的子结构)
+
+B是A的子结构， 即 A中有出现和B相同的结构和节点值。
+
+例如:
+给定的树 A:
+
+     3
+    / \
+   4   5
+  / \
+ 1   2
+给定的树 B：
+
+   4 
+  /
+ 1
+返回 true，因为 B 与 A 的一个子树拥有相同的结构和节点值。
+
+示例 1：
+
+输入：A = [1,2,3], B = [3,1]
+输出：false
+示例 2：
+
+输入：A = [3,4,5,1,2], B = [4,1]
+输出：true
+限制：
+
+0 <= 节点个数 <= 10000
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/shu-de-zi-jie-gou-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```JAVA
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public boolean isSubStructure(TreeNode A, TreeNode B) {
+
+    }
+}
+```
+
+#### [剑指 Offer 64. 求1+2+…+n](https://leetcode.cn/problems/qiu-12n-lcof/)
+
+```
+求 1+2+...+n ，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A?B:C）。
+
+ 
+
+示例 1：
+
+输入: n = 3
+输出: 6
+示例 2：
+
+输入: n = 9
+输出: 45
+ 
+
+限制：
+
+1 <= n <= 10000
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/qiu-12n-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```JAVA
+class Solution {
+    public int sumNums(int n) {
+
+    }
+}
+```
+
+
+
+### 数学(1)
+
+#### [剑指 Offer 44. 数字序列中某一位的数字](https://leetcode.cn/problems/shu-zi-xu-lie-zhong-mou-yi-wei-de-shu-zi-lcof/)
+
+```
+数字以0123456789101112131415…的格式序列化到一个字符序列中。在这个序列中，第5位（从下标0开始计数）是5，第13位是1，第19位是4，等等。
+
+请写一个函数，求任意第n位对应的数字。
+
+ 
+
+示例 1：
+
+输入：n = 3
+输出：3
+示例 2：
+
+输入：n = 11
+输出：0
+ 
+
+限制：
+
+0 <= n < 2^31
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/shu-zi-xu-lie-zhong-mou-yi-wei-de-shu-zi-lcof
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```JAVA
+class Solution {
+    public int findNthDigit(int n) {
+
+    }
+}
+```
+
