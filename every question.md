@@ -1,6 +1,1719 @@
-[TOC]
+- [Jan](#jan)
+  - [2351. 第一个出现两次的字母](#2351-第一个出现两次的字母)
+  - [1801. 积压订单中的订单总数](#1801-积压订单中的订单总数)
+  - [2042. 检查句子中的数字是否递增](#2042-检查句子中的数字是否递增)
+  - [1802. 有界数组中指定下标处的最大值](#1802-有界数组中指定下标处的最大值)
+  - [1803. 统计异或值在范围内的数对有多少](#1803-统计异或值在范围内的数对有多少)
+  - [2180. 统计各位数字之和为偶数的整数个数](#2180-统计各位数字之和为偶数的整数个数)
+  - [1658. 将 x 减到 0 的最小操作数](#1658-将-x-减到-0-的最小操作数)
+  - [2185. 统计包含给定前缀的字符串](#2185-统计包含给定前缀的字符串)
+  - [1806. 还原排列的最少操作步数](#1806-还原排列的最少操作步数)
+  - [753. 破解保险箱](#753-破解保险箱)
+  - [2283. 判断一个数的数字计数是否等于数位的值](#2283-判断一个数的数字计数是否等于数位的值)
+  - [1807. 替换字符串中的括号内容](#1807-替换字符串中的括号内容)
+  - [2287. 重排字符形成目标字符串](#2287-重排字符形成目标字符串)
+  - [1819. 序列中不同最大公约数的数目](#1819-序列中不同最大公约数的数目)
+  - [2293. 极大极小游戏](#2293-极大极小游戏)
+  - [1813. 句子相似性 III](#1813-句子相似性-iii)
+  - [1814. 统计一个数组中好对子的数目](#1814-统计一个数组中好对子的数目)
+  - [1825. 求出 MK 平均值](#1825-求出-mk-平均值)
+  - [2299. 强密码检验器 II](#2299-强密码检验器-ii)
+  - [1817. 查找用户活跃分钟数](#1817-查找用户活跃分钟数)
+  - [1824. 最少侧跳次数](#1824-最少侧跳次数)
+  - [1815. 得到新鲜甜甜圈的最多组数](#1815-得到新鲜甜甜圈的最多组数)
+  - [2303. 计算应缴税款总额](#2303-计算应缴税款总额)
+  - [1828. 统计一个圆中点的数目](#1828-统计一个圆中点的数目)
+  - [1632. 矩阵转换后的秩](#1632-矩阵转换后的秩)
+  - [1663. 具有给定数值的最小字符串](#1663-具有给定数值的最小字符串)
+  - [2309. 兼具大小写的最好英文字母](#2309-兼具大小写的最好英文字母)
+  - [1664. 生成平衡数组的方案数](#1664-生成平衡数组的方案数)
+  - [2315. 统计星号](#2315-统计星号)
+  - [1669. 合并两个链表](#1669-合并两个链表)
+  - [2319. 判断矩阵是否是一个 X 矩阵](#2319-判断矩阵是否是一个-x-矩阵)
+- [Feb](#feb)
+- [Mar](#mar)
+  - [2373. 矩阵中的局部最大值](#2373-矩阵中的局部最大值)
+  - [面试题 05.02. 二进制数转字符串](#面试题-0502-二进制数转字符串)
+  - [1487. 保证文件名唯一](#1487-保证文件名唯一)
+  - [982. 按位与为零的三元组](#982-按位与为零的三元组)
+  - [1599. 经营摩天轮的最大利润](#1599-经营摩天轮的最大利润)
+  - [1653. 使字符串平衡的最少删除次数](#1653-使字符串平衡的最少删除次数)
+  - [1096. 花括号展开 II](#1096-花括号展开-ii)
+  - [剑指 Offer 47. 礼物的最大价值](#剑指-offer-47-礼物的最大价值)
+  - [2379. 得到 K 个黑块的最少涂色次数](#2379-得到-k-个黑块的最少涂色次数)
+  - [1590. 使数组和能被 P 整除](#1590-使数组和能被-p-整除)
+  - [面试题 17.05.  字母与数字](#面试题-1705--字母与数字)
+  - [1617. 统计子树中城市之间最大距离](#1617-统计子树中城市之间最大距离)
+  - [2383. 赢得比赛需要的最少训练时长](#2383-赢得比赛需要的最少训练时长)
+  - [1605. 给定行和列的和求可行矩阵](#1605-给定行和列的和求可行矩阵)
+  - [1615. 最大网络秩](#1615-最大网络秩)
+  - [2488. 统计中位数为 K 的子数组](#2488-统计中位数为-k-的子数组)
+  - [2389. 和有限的最长子序列](#2389-和有限的最长子序列)
+  - [1616. 分割两个字符串得到回文串](#1616-分割两个字符串得到回文串)
+  - [1625. 执行操作后字典序最小的字符串](#1625-执行操作后字典序最小的字符串)
+  - [1012. 至少有 1 位重复的数字](#1012-至少有-1-位重复的数字)
+  - [2469. 温度转换](#2469-温度转换)
+  - [1626. 无矛盾的最佳球队](#1626-无矛盾的最佳球队)
+  - [1630. 等差子数组](#1630-等差子数组)
+  - [1032. 字符流](#1032-字符流)
+  - [1574. 删除最短的子数组使剩余数组有序](#1574-删除最短的子数组使剩余数组有序)
+  - [2395. 和相等的子数组](#2395-和相等的子数组)
+  - [1638. 统计只差一个字符的子串数目](#1638-统计只差一个字符的子串数目)
+  - [1092. 最短公共超序列](#1092-最短公共超序列)
+  - [1641. 统计字典序元音字符串的数目](#1641-统计字典序元音字符串的数目)
+  - [1637. 两点之间不包含任何点的最宽垂直区域](#1637-两点之间不包含任何点的最宽垂直区域)
+  - [2367. 算术三元组的数目](#2367-算术三元组的数目)
+
+### Jan
+
+#### [2351. 第一个出现两次的字母](https://leetcode.cn/problems/first-letter-to-appear-twice/)
+
+1
+
+```
+给你一个由小写英文字母组成的字符串 s ，请你找出并返回第一个出现 两次 的字母。
+
+注意：
+
+如果 a 的 第二次 出现比 b 的 第二次 出现在字符串中的位置更靠前，则认为字母 a 在字母 b 之前出现两次。
+s 包含至少一个出现两次的字母。
+ 
+
+示例 1：
+
+输入：s = "abccbaacz"
+输出："c"
+解释：
+字母 'a' 在下标 0 、5 和 6 处出现。
+字母 'b' 在下标 1 和 4 处出现。
+字母 'c' 在下标 2 、3 和 7 处出现。
+字母 'z' 在下标 8 处出现。
+字母 'c' 是第一个出现两次的字母，因为在所有字母中，'c' 第二次出现的下标是最小的。
+示例 2：
+
+输入：s = "abcdd"
+输出："d"
+解释：
+只有字母 'd' 出现两次，所以返回 'd' 。
+ 
+
+提示：
+
+2 <= s.length <= 100
+s 由小写英文字母组成
+s 包含至少一个重复字母
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/first-letter-to-appear-twice
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public char repeatedCharacter(String s) {
+
+    }
+}
+```
+
+#### [1801. 积压订单中的订单总数](https://leetcode.cn/problems/number-of-orders-in-the-backlog/)
+
+1
+
+```
+给你一个二维整数数组 orders ，其中每个 orders[i] = [pricei, amounti, orderTypei] 表示有 amounti 笔类型为 orderTypei 、价格为 pricei 的订单。
+
+订单类型 orderTypei 可以分为两种：
+
+0 表示这是一批采购订单 buy
+1 表示这是一批销售订单 sell
+注意，orders[i] 表示一批共计 amounti 笔的独立订单，这些订单的价格和类型相同。对于所有有效的 i ，由 orders[i] 表示的所有订单提交时间均早于 orders[i+1] 表示的所有订单。
+
+存在由未执行订单组成的 积压订单 。积压订单最初是空的。提交订单时，会发生以下情况：
+
+如果该订单是一笔采购订单 buy ，则可以查看积压订单中价格 最低 的销售订单 sell 。如果该销售订单 sell 的价格 低于或等于 当前采购订单 buy 的价格，则匹配并执行这两笔订单，并将销售订单 sell 从积压订单中删除。否则，采购订单 buy 将会添加到积压订单中。
+反之亦然，如果该订单是一笔销售订单 sell ，则可以查看积压订单中价格 最高 的采购订单 buy 。如果该采购订单 buy 的价格 高于或等于 当前销售订单 sell 的价格，则匹配并执行这两笔订单，并将采购订单 buy 从积压订单中删除。否则，销售订单 sell 将会添加到积压订单中。
+输入所有订单后，返回积压订单中的 订单总数 。由于数字可能很大，所以需要返回对 109 + 7 取余的结果。
+
+ 
+
+示例 1：
 
 
+输入：orders = [[10,5,0],[15,2,1],[25,1,1],[30,4,0]]
+输出：6
+解释：输入订单后会发生下述情况：
+- 提交 5 笔采购订单，价格为 10 。没有销售订单，所以这 5 笔订单添加到积压订单中。
+- 提交 2 笔销售订单，价格为 15 。没有采购订单的价格大于或等于 15 ，所以这 2 笔订单添加到积压订单中。
+- 提交 1 笔销售订单，价格为 25 。没有采购订单的价格大于或等于 25 ，所以这 1 笔订单添加到积压订单中。
+- 提交 4 笔采购订单，价格为 30 。前 2 笔采购订单与价格最低（价格为 15）的 2 笔销售订单匹配，从积压订单中删除这 2 笔销售订单。第 3 笔采购订单与价格最低的 1 笔销售订单匹配，销售订单价格为 25 ，从积压订单中删除这 1 笔销售订单。积压订单中不存在更多销售订单，所以第 4 笔采购订单需要添加到积压订单中。
+最终，积压订单中有 5 笔价格为 10 的采购订单，和 1 笔价格为 30 的采购订单。所以积压订单中的订单总数为 6 。
+示例 2：
+
+
+输入：orders = [[7,1000000000,1],[15,3,0],[5,999999995,0],[5,1,1]]
+输出：999999984
+解释：输入订单后会发生下述情况：
+- 提交 109 笔销售订单，价格为 7 。没有采购订单，所以这 109 笔订单添加到积压订单中。
+- 提交 3 笔采购订单，价格为 15 。这些采购订单与价格最低（价格为 7 ）的 3 笔销售订单匹配，从积压订单中删除这 3 笔销售订单。
+- 提交 999999995 笔采购订单，价格为 5 。销售订单的最低价为 7 ，所以这 999999995 笔订单添加到积压订单中。
+- 提交 1 笔销售订单，价格为 5 。这笔销售订单与价格最高（价格为 5 ）的 1 笔采购订单匹配，从积压订单中删除这 1 笔采购订单。
+最终，积压订单中有 (1000000000-3) 笔价格为 7 的销售订单，和 (999999995-1) 笔价格为 5 的采购订单。所以积压订单中的订单总数为 1999999991 ，等于 999999984 % (109 + 7) 。
+ 
+
+提示：
+
+1 <= orders.length <= 105
+orders[i].length == 3
+1 <= pricei, amounti <= 109
+orderTypei 为 0 或 1
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/number-of-orders-in-the-backlog
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public int getNumberOfBacklogOrders(int[][] orders) {
+
+    }
+}
+```
+
+#### [2042. 检查句子中的数字是否递增](https://leetcode.cn/problems/check-if-numbers-are-ascending-in-a-sentence/)
+
+```
+句子是由若干 token 组成的一个列表，token 间用 单个 空格分隔，句子没有前导或尾随空格。每个 token 要么是一个由数字 0-9 组成的不含前导零的 正整数 ，要么是一个由小写英文字母组成的 单词 。
+
+示例，"a puppy has 2 eyes 4 legs" 是一个由 7 个 token 组成的句子："2" 和 "4" 是数字，其他像 "puppy" 这样的 tokens 属于单词。
+给你一个表示句子的字符串 s ，你需要检查 s 中的 全部 数字是否从左到右严格递增（即，除了最后一个数字，s 中的 每个 数字都严格小于它 右侧 的数字）。
+
+如果满足题目要求，返回 true ，否则，返回 false 。
+
+ 
+
+示例 1：
+
+
+
+输入：s = "1 box has 3 blue 4 red 6 green and 12 yellow marbles"
+输出：true
+解释：句子中的数字是：1, 3, 4, 6, 12 。
+这些数字是按从左到右严格递增的 1 < 3 < 4 < 6 < 12 。
+示例 2：
+
+输入：s = "hello world 5 x 5"
+输出：false
+解释：句子中的数字是：5, 5 。这些数字不是严格递增的。
+示例 3：
+
+
+
+输入：s = "sunset is at 7 51 pm overnight lows will be in the low 50 and 60 s"
+输出：false
+解释：s 中的数字是：7, 51, 50, 60 。这些数字不是严格递增的。
+示例 4：
+
+输入：s = "4 5 11 26"
+输出：true
+解释：s 中的数字是：4, 5, 11, 26 。
+这些数字是按从左到右严格递增的：4 < 5 < 11 < 26 。
+ 
+
+提示：
+
+3 <= s.length <= 200
+s 由小写英文字母、空格和数字 0 到 9 组成（包含 0 和 9）
+s 中数字 token 的数目在 2 和 100 之间（包含 2 和 100）
+s 中的 token 之间由单个空格分隔
+s 中至少有 两个 数字
+s 中的每个数字都是一个 小于 100 的 正 数，且不含前导零
+s 不含前导或尾随空格
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/check-if-numbers-are-ascending-in-a-sentence
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public boolean areNumbersAscending(String s) {
+
+    }
+}
+```
+
+#### [1802. 有界数组中指定下标处的最大值](https://leetcode.cn/problems/maximum-value-at-a-given-index-in-a-bounded-array/)
+
+```
+给你三个正整数 n、index 和 maxSum 。你需要构造一个同时满足下述所有条件的数组 nums（下标 从 0 开始 计数）：
+
+nums.length == n
+nums[i] 是 正整数 ，其中 0 <= i < n
+abs(nums[i] - nums[i+1]) <= 1 ，其中 0 <= i < n-1
+nums 中所有元素之和不超过 maxSum
+nums[index] 的值被 最大化
+返回你所构造的数组中的 nums[index] 。
+
+注意：abs(x) 等于 x 的前提是 x >= 0 ；否则，abs(x) 等于 -x 。
+
+ 
+
+示例 1：
+
+输入：n = 4, index = 2,  maxSum = 6
+输出：2
+解释：数组 [1,1,2,1] 和 [1,2,2,1] 满足所有条件。不存在其他在指定下标处具有更大值的有效数组。
+示例 2：
+
+输入：n = 6, index = 1,  maxSum = 10
+输出：3
+ 
+
+提示：
+
+1 <= n <= maxSum <= 109
+0 <= index < n
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/maximum-value-at-a-given-index-in-a-bounded-array
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public int maxValue(int n, int index, int maxSum) {
+
+    }
+}
+```
+
+#### [1803. 统计异或值在范围内的数对有多少](https://leetcode.cn/problems/count-pairs-with-xor-in-a-range/)
+
+1
+
+```
+给你一个整数数组 nums （下标 从 0 开始 计数）以及两个整数：low 和 high ，请返回 漂亮数对 的数目。
+
+漂亮数对 是一个形如 (i, j) 的数对，其中 0 <= i < j < nums.length 且 low <= (nums[i] XOR nums[j]) <= high 。
+
+ 
+
+示例 1：
+
+输入：nums = [1,4,2,7], low = 2, high = 6
+输出：6
+解释：所有漂亮数对 (i, j) 列出如下：
+    - (0, 1): nums[0] XOR nums[1] = 5 
+    - (0, 2): nums[0] XOR nums[2] = 3
+    - (0, 3): nums[0] XOR nums[3] = 6
+    - (1, 2): nums[1] XOR nums[2] = 6
+    - (1, 3): nums[1] XOR nums[3] = 3
+    - (2, 3): nums[2] XOR nums[3] = 5
+示例 2：
+
+输入：nums = [9,8,4,2,1], low = 5, high = 14
+输出：8
+解释：所有漂亮数对 (i, j) 列出如下：
+​​​​​    - (0, 2): nums[0] XOR nums[2] = 13
+    - (0, 3): nums[0] XOR nums[3] = 11
+    - (0, 4): nums[0] XOR nums[4] = 8
+    - (1, 2): nums[1] XOR nums[2] = 12
+    - (1, 3): nums[1] XOR nums[3] = 10
+    - (1, 4): nums[1] XOR nums[4] = 9
+    - (2, 3): nums[2] XOR nums[3] = 6
+    - (2, 4): nums[2] XOR nums[4] = 5
+ 
+
+提示：
+
+1 <= nums.length <= 2 * 104
+1 <= nums[i] <= 2 * 104
+1 <= low <= high <= 2 * 104
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/count-pairs-with-xor-in-a-range
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public int countPairs(int[] nums, int low, int high) {
+
+    }
+}
+```
+
+#### [2180. 统计各位数字之和为偶数的整数个数](https://leetcode.cn/problems/count-integers-with-even-digit-sum/)
+
+```
+给你一个正整数 num ，请你统计并返回 小于或等于 num 且各位数字之和为 偶数 的正整数的数目。
+
+正整数的 各位数字之和 是其所有位上的对应数字相加的结果。
+
+ 
+
+示例 1：
+
+输入：num = 4
+输出：2
+解释：
+只有 2 和 4 满足小于等于 4 且各位数字之和为偶数。    
+示例 2：
+
+输入：num = 30
+输出：14
+解释：
+只有 14 个整数满足小于等于 30 且各位数字之和为偶数，分别是： 
+2、4、6、8、11、13、15、17、19、20、22、24、26 和 28 。
+ 
+
+提示：
+
+1 <= num <= 1000
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/count-integers-with-even-digit-sum
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public int countEven(int num) {
+
+    }
+}
+```
+
+#### [1658. 将 x 减到 0 的最小操作数](https://leetcode.cn/problems/minimum-operations-to-reduce-x-to-zero/)
+
+```
+给你一个整数数组 nums 和一个整数 x 。每一次操作时，你应当移除数组 nums 最左边或最右边的元素，然后从 x 中减去该元素的值。请注意，需要 修改 数组以供接下来的操作使用。
+
+如果可以将 x 恰好 减到 0 ，返回 最小操作数 ；否则，返回 -1 。
+
+ 
+
+示例 1：
+
+输入：nums = [1,1,4,2,3], x = 5
+输出：2
+解释：最佳解决方案是移除后两个元素，将 x 减到 0 。
+示例 2：
+
+输入：nums = [5,6,7,8,9], x = 4
+输出：-1
+示例 3：
+
+输入：nums = [3,2,20,1,1,3], x = 10
+输出：5
+解释：最佳解决方案是移除后三个元素和前两个元素（总共 5 次操作），将 x 减到 0 。
+ 
+
+提示：
+
+1 <= nums.length <= 105
+1 <= nums[i] <= 104
+1 <= x <= 109
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/minimum-operations-to-reduce-x-to-zero
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public int minOperations(int[] nums, int x) {
+
+    }
+}
+```
+
+1
+
+#### [2185. 统计包含给定前缀的字符串](https://leetcode.cn/problems/counting-words-with-a-given-prefix/)
+
+```
+给你一个字符串数组 words 和一个字符串 pref 。
+
+返回 words 中以 pref 作为 前缀 的字符串的数目。
+
+字符串 s 的 前缀 就是  s 的任一前导连续字符串。
+
+ 
+
+示例 1：
+
+输入：words = ["pay","attention","practice","attend"], pref = "at"
+输出：2
+解释：以 "at" 作为前缀的字符串有两个，分别是："attention" 和 "attend" 。
+示例 2：
+
+输入：words = ["leetcode","win","loops","success"], pref = "code"
+输出：0
+解释：不存在以 "code" 作为前缀的字符串。
+ 
+
+提示：
+
+1 <= words.length <= 100
+1 <= words[i].length, pref.length <= 100
+words[i] 和 pref 由小写英文字母组成
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/counting-words-with-a-given-prefix
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public int prefixCount(String[] words, String pref) {
+
+    }
+}
+```
+
+1
+
+#### [1806. 还原排列的最少操作步数](https://leetcode.cn/problems/minimum-number-of-operations-to-reinitialize-a-permutation/)
+
+```
+给你一个偶数 n​​​​​​ ，已知存在一个长度为 n 的排列 perm ，其中 perm[i] == i​（下标 从 0 开始 计数）。
+
+一步操作中，你将创建一个新数组 arr ，对于每个 i ：
+
+如果 i % 2 == 0 ，那么 arr[i] = perm[i / 2]
+如果 i % 2 == 1 ，那么 arr[i] = perm[n / 2 + (i - 1) / 2]
+然后将 arr​​ 赋值​​给 perm 。
+
+要想使 perm 回到排列初始值，至少需要执行多少步操作？返回最小的 非零 操作步数。
+
+ 
+
+示例 1：
+
+输入：n = 2
+输出：1
+解释：最初，perm = [0,1]
+第 1 步操作后，perm = [0,1]
+所以，仅需执行 1 步操作
+示例 2：
+
+输入：n = 4
+输出：2
+解释：最初，perm = [0,1,2,3]
+第 1 步操作后，perm = [0,2,1,3]
+第 2 步操作后，perm = [0,1,2,3]
+所以，仅需执行 2 步操作
+示例 3：
+
+输入：n = 6
+输出：4
+ 
+
+提示：
+
+2 <= n <= 1000
+n​​​​​​ 是一个偶数
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/minimum-number-of-operations-to-reinitialize-a-permutation
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public int reinitializePermutation(int n) {
+
+    }
+}
+```
+
+#### [753. 破解保险箱](https://leetcode.cn/problems/cracking-the-safe/)
+
+```
+有一个需要密码才能打开的保险箱。密码是 n 位数, 密码的每一位都是范围 [0, k - 1] 中的一个数字。
+
+保险箱有一种特殊的密码校验方法，你可以随意输入密码序列，保险箱会自动记住 最后 n 位输入 ，如果匹配，则能够打开保险箱。
+
+例如，正确的密码是 "345" ，并且你输入的是 "012345" ：
+输入 0 之后，最后 3 位输入是 "0" ，不正确。
+输入 1 之后，最后 3 位输入是 "01" ，不正确。
+输入 2 之后，最后 3 位输入是 "012" ，不正确。
+输入 3 之后，最后 3 位输入是 "123" ，不正确。
+输入 4 之后，最后 3 位输入是 "234" ，不正确。
+输入 5 之后，最后 3 位输入是 "345" ，正确，打开保险箱。
+在只知道密码位数 n 和范围边界 k 的前提下，请你找出并返回确保在输入的 某个时刻 能够打开保险箱的任一 最短 密码序列 。
+
+ 
+
+示例 1：
+
+输入：n = 1, k = 2
+输出："10"
+解释：密码只有 1 位，所以输入每一位就可以。"01" 也能够确保打开保险箱。
+示例 2：
+
+输入：n = 2, k = 2
+输出："01100"
+解释：对于每种可能的密码：
+- "00" 从第 4 位开始输入。
+- "01" 从第 1 位开始输入。
+- "10" 从第 3 位开始输入。
+- "11" 从第 2 位开始输入。
+因此 "01100" 可以确保打开保险箱。"01100"、"10011" 和 "11001" 也可以确保打开保险箱。
+ 
+
+提示：
+
+1 <= n <= 4
+1 <= k <= 10
+1 <= kn <= 4096
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/cracking-the-safe
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public String crackSafe(int n, int k) {
+
+    }
+}
+```
+
+#### [2283. 判断一个数的数字计数是否等于数位的值](https://leetcode.cn/problems/check-if-number-has-equal-digit-count-and-digit-value/)
+
+```
+给你一个下标从 0 开始长度为 n 的字符串 num ，它只包含数字。
+
+如果对于 每个 0 <= i < n 的下标 i ，都满足数位 i 在 num 中出现了 num[i]次，那么请你返回 true ，否则返回 false 。
+
+ 
+
+示例 1：
+
+输入：num = "1210"
+输出：true
+解释：
+num[0] = '1' 。数字 0 在 num 中出现了一次。
+num[1] = '2' 。数字 1 在 num 中出现了两次。
+num[2] = '1' 。数字 2 在 num 中出现了一次。
+num[3] = '0' 。数字 3 在 num 中出现了零次。
+"1210" 满足题目要求条件，所以返回 true 。
+示例 2：
+
+输入：num = "030"
+输出：false
+解释：
+num[0] = '0' 。数字 0 应该出现 0 次，但是在 num 中出现了两次。
+num[1] = '3' 。数字 1 应该出现 3 次，但是在 num 中出现了零次。
+num[2] = '0' 。数字 2 在 num 中出现了 0 次。
+下标 0 和 1 都违反了题目要求，所以返回 false 。
+ 
+
+提示：
+
+n == num.length
+1 <= n <= 10
+num 只包含数字。
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/check-if-number-has-equal-digit-count-and-digit-value
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public boolean digitCount(String num) {
+
+    }
+}
+```
+
+#### [1807. 替换字符串中的括号内容](https://leetcode.cn/problems/evaluate-the-bracket-pairs-of-a-string/)
+
+```
+给你一个字符串 s ，它包含一些括号对，每个括号中包含一个 非空 的键。
+
+比方说，字符串 "(name)is(age)yearsold" 中，有 两个 括号对，分别包含键 "name" 和 "age" 。
+你知道许多键对应的值，这些关系由二维字符串数组 knowledge 表示，其中 knowledge[i] = [keyi, valuei] ，表示键 keyi 对应的值为 valuei 。
+
+你需要替换 所有 的括号对。当你替换一个括号对，且它包含的键为 keyi 时，你需要：
+
+将 keyi 和括号用对应的值 valuei 替换。
+如果从 knowledge 中无法得知某个键对应的值，你需要将 keyi 和括号用问号 "?" 替换（不需要引号）。
+knowledge 中每个键最多只会出现一次。s 中不会有嵌套的括号。
+
+请你返回替换 所有 括号对后的结果字符串。
+
+ 
+
+示例 1：
+
+输入：s = "(name)is(age)yearsold", knowledge = [["name","bob"],["age","two"]]
+输出："bobistwoyearsold"
+解释：
+键 "name" 对应的值为 "bob" ，所以将 "(name)" 替换为 "bob" 。
+键 "age" 对应的值为 "two" ，所以将 "(age)" 替换为 "two" 。
+示例 2：
+
+输入：s = "hi(name)", knowledge = [["a","b"]]
+输出："hi?"
+解释：由于不知道键 "name" 对应的值，所以用 "?" 替换 "(name)" 。
+示例 3：
+
+输入：s = "(a)(a)(a)aaa", knowledge = [["a","yes"]]
+输出："yesyesyesaaa"
+解释：相同的键在 s 中可能会出现多次。
+键 "a" 对应的值为 "yes" ，所以将所有的 "(a)" 替换为 "yes" 。
+注意，不在括号里的 "a" 不需要被替换。
+ 
+
+提示：
+
+1 <= s.length <= 105
+0 <= knowledge.length <= 105
+knowledge[i].length == 2
+1 <= keyi.length, valuei.length <= 10
+s 只包含小写英文字母和圆括号 '(' 和 ')' 。
+s 中每一个左圆括号 '(' 都有对应的右圆括号 ')' 。
+s 中每对括号内的键都不会为空。
+s 中不会有嵌套括号对。
+keyi 和 valuei 只包含小写英文字母。
+knowledge 中的 keyi 不会重复。
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/evaluate-the-bracket-pairs-of-a-string
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public String evaluate(String s, List<List<String>> knowledge) {
+
+    }
+}
+```
+
+#### [2287. 重排字符形成目标字符串](https://leetcode.cn/problems/rearrange-characters-to-make-target-string/)
+
+```
+给你两个下标从 0 开始的字符串 s 和 target 。你可以从 s 取出一些字符并将其重排，得到若干新的字符串。
+
+从 s 中取出字符并重新排列，返回可以形成 target 的 最大 副本数。
+
+ 
+
+示例 1：
+
+输入：s = "ilovecodingonleetcode", target = "code"
+输出：2
+解释：
+对于 "code" 的第 1 个副本，选取下标为 4 、5 、6 和 7 的字符。
+对于 "code" 的第 2 个副本，选取下标为 17 、18 、19 和 20 的字符。
+形成的字符串分别是 "ecod" 和 "code" ，都可以重排为 "code" 。
+可以形成最多 2 个 "code" 的副本，所以返回 2 。
+示例 2：
+
+输入：s = "abcba", target = "abc"
+输出：1
+解释：
+选取下标为 0 、1 和 2 的字符，可以形成 "abc" 的 1 个副本。 
+可以形成最多 1 个 "abc" 的副本，所以返回 1 。
+注意，尽管下标 3 和 4 分别有额外的 'a' 和 'b' ，但不能重用下标 2 处的 'c' ，所以无法形成 "abc" 的第 2 个副本。
+示例 3：
+
+输入：s = "abbaccaddaeea", target = "aaaaa"
+输出：1
+解释：
+选取下标为 0 、3 、6 、9 和 12 的字符，可以形成 "aaaaa" 的 1 个副本。
+可以形成最多 1 个 "aaaaa" 的副本，所以返回 1 。
+ 
+
+提示：
+
+1 <= s.length <= 100
+1 <= target.length <= 10
+s 和 target 由小写英文字母组成
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/rearrange-characters-to-make-target-string
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public int rearrangeCharacters(String s, String target) {
+
+    }
+}
+```
+
+#### [1819. 序列中不同最大公约数的数目](https://leetcode.cn/problems/number-of-different-subsequences-gcds/)
+
+```
+给你一个由正整数组成的数组 nums 。
+
+数字序列的 最大公约数 定义为序列中所有整数的共有约数中的最大整数。
+
+例如，序列 [4,6,16] 的最大公约数是 2 。
+数组的一个 子序列 本质是一个序列，可以通过删除数组中的某些元素（或者不删除）得到。
+
+例如，[2,5,10] 是 [1,2,1,2,4,1,5,10] 的一个子序列。
+计算并返回 nums 的所有 非空 子序列中 不同 最大公约数的 数目 。
+
+ 
+
+示例 1：
+
+
+输入：nums = [6,10,3]
+输出：5
+解释：上图显示了所有的非空子序列与各自的最大公约数。
+不同的最大公约数为 6 、10 、3 、2 和 1 。
+示例 2：
+
+输入：nums = [5,15,40,5,6]
+输出：7
+ 
+
+提示：
+
+1 <= nums.length <= 105
+1 <= nums[i] <= 2 * 105
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/number-of-different-subsequences-gcds
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public int countDifferentSubsequenceGCDs(int[] nums) {
+
+    }
+}
+```
+
+#### [2293. 极大极小游戏](https://leetcode.cn/problems/min-max-game/)
+
+```
+给你一个下标从 0 开始的整数数组 nums ，其长度是 2 的幂。
+
+对 nums 执行下述算法：
+
+设 n 等于 nums 的长度，如果 n == 1 ，终止 算法过程。否则，创建 一个新的整数数组 newNums ，新数组长度为 n / 2 ，下标从 0 开始。
+对于满足 0 <= i < n / 2 的每个 偶数 下标 i ，将 newNums[i] 赋值 为 min(nums[2 * i], nums[2 * i + 1]) 。
+对于满足 0 <= i < n / 2 的每个 奇数 下标 i ，将 newNums[i] 赋值 为 max(nums[2 * i], nums[2 * i + 1]) 。
+用 newNums 替换 nums 。
+从步骤 1 开始 重复 整个过程。
+执行算法后，返回 nums 中剩下的那个数字。
+
+ 
+
+示例 1：
+
+
+
+输入：nums = [1,3,5,2,4,8,2,2]
+输出：1
+解释：重复执行算法会得到下述数组。
+第一轮：nums = [1,5,4,2]
+第二轮：nums = [1,4]
+第三轮：nums = [1]
+1 是最后剩下的那个数字，返回 1 。
+示例 2：
+
+输入：nums = [3]
+输出：3
+解释：3 就是最后剩下的数字，返回 3 。
+ 
+
+提示：
+
+1 <= nums.length <= 1024
+1 <= nums[i] <= 109
+nums.length 是 2 的幂
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/min-max-game
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public int minMaxGame(int[] nums) {
+
+    }
+}
+```
+
+#### [1813. 句子相似性 III](https://leetcode.cn/problems/sentence-similarity-iii/)
+
+```
+一个句子是由一些单词与它们之间的单个空格组成，且句子的开头和结尾没有多余空格。比方说，"Hello World" ，"HELLO" ，"hello world hello world" 都是句子。每个单词都 只 包含大写和小写英文字母。
+
+如果两个句子 sentence1 和 sentence2 ，可以通过往其中一个句子插入一个任意的句子（可以是空句子）而得到另一个句子，那么我们称这两个句子是 相似的 。比方说，sentence1 = "Hello my name is Jane" 且 sentence2 = "Hello Jane" ，我们可以往 sentence2 中 "Hello" 和 "Jane" 之间插入 "my name is" 得到 sentence1 。
+
+给你两个句子 sentence1 和 sentence2 ，如果 sentence1 和 sentence2 是相似的，请你返回 true ，否则返回 false 。
+
+ 
+
+示例 1：
+
+输入：sentence1 = "My name is Haley", sentence2 = "My Haley"
+输出：true
+解释：可以往 sentence2 中 "My" 和 "Haley" 之间插入 "name is" ，得到 sentence1 。
+示例 2：
+
+输入：sentence1 = "of", sentence2 = "A lot of words"
+输出：false
+解释：没法往这两个句子中的一个句子只插入一个句子就得到另一个句子。
+示例 3：
+
+输入：sentence1 = "Eating right now", sentence2 = "Eating"
+输出：true
+解释：可以往 sentence2 的结尾插入 "right now" 得到 sentence1 。
+示例 4：
+
+输入：sentence1 = "Luky", sentence2 = "Lucccky"
+输出：false
+ 
+
+提示：
+
+1 <= sentence1.length, sentence2.length <= 100
+sentence1 和 sentence2 都只包含大小写英文字母和空格。
+sentence1 和 sentence2 中的单词都只由单个空格隔开。
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/sentence-similarity-iii
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public boolean areSentencesSimilar(String sentence1, String sentence2) {
+
+    }
+}
+```
+
+#### [1814. 统计一个数组中好对子的数目](https://leetcode.cn/problems/count-nice-pairs-in-an-array/)
+
+```
+给你一个数组 nums ，数组中只包含非负整数。定义 rev(x) 的值为将整数 x 各个数字位反转得到的结果。比方说 rev(123) = 321 ， rev(120) = 21 。我们称满足下面条件的下标对 (i, j) 是 好的 ：
+
+0 <= i < j < nums.length
+nums[i] + rev(nums[j]) == nums[j] + rev(nums[i])
+请你返回好下标对的数目。由于结果可能会很大，请将结果对 109 + 7 取余 后返回。
+
+ 
+
+示例 1：
+
+输入：nums = [42,11,1,97]
+输出：2
+解释：两个坐标对为：
+ - (0,3)：42 + rev(97) = 42 + 79 = 121, 97 + rev(42) = 97 + 24 = 121 。
+ - (1,2)：11 + rev(1) = 11 + 1 = 12, 1 + rev(11) = 1 + 11 = 12 。
+示例 2：
+
+输入：nums = [13,10,35,24,76]
+输出：4
+ 
+
+提示：
+
+1 <= nums.length <= 105
+0 <= nums[i] <= 109
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/count-nice-pairs-in-an-array
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public int countNicePairs(int[] nums) {
+
+    }
+}
+```
+
+#### [1825. 求出 MK 平均值](https://leetcode.cn/problems/finding-mk-average/)
+
+```
+给你两个整数 m 和 k ，以及数据流形式的若干整数。你需要实现一个数据结构，计算这个数据流的 MK 平均值 。
+
+MK 平均值 按照如下步骤计算：
+
+如果数据流中的整数少于 m 个，MK 平均值 为 -1 ，否则将数据流中最后 m 个元素拷贝到一个独立的容器中。
+从这个容器中删除最小的 k 个数和最大的 k 个数。
+计算剩余元素的平均值，并 向下取整到最近的整数 。
+请你实现 MKAverage 类：
+
+MKAverage(int m, int k) 用一个空的数据流和两个整数 m 和 k 初始化 MKAverage 对象。
+void addElement(int num) 往数据流中插入一个新的元素 num 。
+int calculateMKAverage() 对当前的数据流计算并返回 MK 平均数 ，结果需 向下取整到最近的整数 。
+ 
+
+示例 1：
+
+输入：
+["MKAverage", "addElement", "addElement", "calculateMKAverage", "addElement", "calculateMKAverage", "addElement", "addElement", "addElement", "calculateMKAverage"]
+[[3, 1], [3], [1], [], [10], [], [5], [5], [5], []]
+输出：
+[null, null, null, -1, null, 3, null, null, null, 5]
+
+解释：
+MKAverage obj = new MKAverage(3, 1); 
+obj.addElement(3);        // 当前元素为 [3]
+obj.addElement(1);        // 当前元素为 [3,1]
+obj.calculateMKAverage(); // 返回 -1 ，因为 m = 3 ，但数据流中只有 2 个元素
+obj.addElement(10);       // 当前元素为 [3,1,10]
+obj.calculateMKAverage(); // 最后 3 个元素为 [3,1,10]
+                          // 删除最小以及最大的 1 个元素后，容器为 [3]
+                          // [3] 的平均值等于 3/1 = 3 ，故返回 3
+obj.addElement(5);        // 当前元素为 [3,1,10,5]
+obj.addElement(5);        // 当前元素为 [3,1,10,5,5]
+obj.addElement(5);        // 当前元素为 [3,1,10,5,5,5]
+obj.calculateMKAverage(); // 最后 3 个元素为 [5,5,5]
+                          // 删除最小以及最大的 1 个元素后，容器为 [5]
+                          // [5] 的平均值等于 5/1 = 5 ，故返回 5
+ 
+
+提示：
+
+3 <= m <= 105
+1 <= k*2 < m
+1 <= num <= 105
+addElement 与 calculateMKAverage 总操作次数不超过 105 次。
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/finding-mk-average
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class MKAverage {
+
+    public MKAverage(int m, int k) {
+
+    }
+    
+    public void addElement(int num) {
+
+    }
+    
+    public int calculateMKAverage() {
+
+    }
+}
+
+/**
+ * Your MKAverage object will be instantiated and called as such:
+ * MKAverage obj = new MKAverage(m, k);
+ * obj.addElement(num);
+ * int param_2 = obj.calculateMKAverage();
+ */
+```
+
+#### [2299. 强密码检验器 II](https://leetcode.cn/problems/strong-password-checker-ii/)
+
+```
+如果一个密码满足以下所有条件，我们称它是一个 强 密码：
+
+它有至少 8 个字符。
+至少包含 一个小写英文 字母。
+至少包含 一个大写英文 字母。
+至少包含 一个数字 。
+至少包含 一个特殊字符 。特殊字符为："!@#$%^&*()-+" 中的一个。
+它 不 包含 2 个连续相同的字符（比方说 "aab" 不符合该条件，但是 "aba" 符合该条件）。
+给你一个字符串 password ，如果它是一个 强 密码，返回 true，否则返回 false 。
+
+ 
+
+示例 1：
+
+输入：password = "IloveLe3tcode!"
+输出：true
+解释：密码满足所有的要求，所以我们返回 true 。
+示例 2：
+
+输入：password = "Me+You--IsMyDream"
+输出：false
+解释：密码不包含数字，且包含 2 个连续相同的字符。所以我们返回 false 。
+示例 3：
+
+输入：password = "1aB!"
+输出：false
+解释：密码不符合长度要求。所以我们返回 false 。
+ 
+
+提示：
+
+1 <= password.length <= 100
+password 包含字母，数字和 "!@#$%^&*()-+" 这些特殊字符。
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/strong-password-checker-ii
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public boolean strongPasswordCheckerII(String password) {
+
+    }
+}
+```
+
+#### [1817. 查找用户活跃分钟数](https://leetcode.cn/problems/finding-the-users-active-minutes/)
+
+```
+给你用户在 LeetCode 的操作日志，和一个整数 k 。日志用一个二维整数数组 logs 表示，其中每个 logs[i] = [IDi, timei] 表示 ID 为 IDi 的用户在 timei 分钟时执行了某个操作。
+
+多个用户 可以同时执行操作，单个用户可以在同一分钟内执行 多个操作 。
+
+指定用户的 用户活跃分钟数（user active minutes，UAM） 定义为用户对 LeetCode 执行操作的 唯一分钟数 。 即使一分钟内执行多个操作，也只能按一分钟计数。
+
+请你统计用户活跃分钟数的分布情况，统计结果是一个长度为 k 且 下标从 1 开始计数 的数组 answer ，对于每个 j（1 <= j <= k），answer[j] 表示 用户活跃分钟数 等于 j 的用户数。
+
+返回上面描述的答案数组 answer 。
+
+ 
+
+示例 1：
+
+输入：logs = [[0,5],[1,2],[0,2],[0,5],[1,3]], k = 5
+输出：[0,2,0,0,0]
+解释：
+ID=0 的用户执行操作的分钟分别是：5 、2 和 5 。因此，该用户的用户活跃分钟数为 2（分钟 5 只计数一次）
+ID=1 的用户执行操作的分钟分别是：2 和 3 。因此，该用户的用户活跃分钟数为 2
+2 个用户的用户活跃分钟数都是 2 ，answer[2] 为 2 ，其余 answer[j] 的值都是 0
+示例 2：
+
+输入：logs = [[1,1],[2,2],[2,3]], k = 4
+输出：[1,1,0,0]
+解释：
+ID=1 的用户仅在分钟 1 执行单个操作。因此，该用户的用户活跃分钟数为 1
+ID=2 的用户执行操作的分钟分别是：2 和 3 。因此，该用户的用户活跃分钟数为 2
+1 个用户的用户活跃分钟数是 1 ，1 个用户的用户活跃分钟数是 2 
+因此，answer[1] = 1 ，answer[2] = 1 ，其余的值都是 0
+ 
+
+提示：
+
+1 <= logs.length <= 104
+0 <= IDi <= 109
+1 <= timei <= 105
+k 的取值范围是 [用户的最大用户活跃分钟数, 105]
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/finding-the-users-active-minutes
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public int[] findingUsersActiveMinutes(int[][] logs, int k) {
+
+    }
+}
+```
+
+#### [1824. 最少侧跳次数](https://leetcode.cn/problems/minimum-sideway-jumps/)
+
+```
+给你一个长度为 n 的 3 跑道道路 ，它总共包含 n + 1 个 点 ，编号为 0 到 n 。一只青蛙从 0 号点第二条跑道 出发 ，它想要跳到点 n 处。然而道路上可能有一些障碍。
+
+给你一个长度为 n + 1 的数组 obstacles ，其中 obstacles[i] （取值范围从 0 到 3）表示在点 i 处的 obstacles[i] 跑道上有一个障碍。如果 obstacles[i] == 0 ，那么点 i 处没有障碍。任何一个点的三条跑道中 最多有一个 障碍。
+
+比方说，如果 obstacles[2] == 1 ，那么说明在点 2 处跑道 1 有障碍。
+这只青蛙从点 i 跳到点 i + 1 且跑道不变的前提是点 i + 1 的同一跑道上没有障碍。为了躲避障碍，这只青蛙也可以在 同一个 点处 侧跳 到 另外一条 跑道（这两条跑道可以不相邻），但前提是跳过去的跑道该点处没有障碍。
+
+比方说，这只青蛙可以从点 3 处的跑道 3 跳到点 3 处的跑道 1 。
+这只青蛙从点 0 处跑道 2 出发，并想到达点 n 处的 任一跑道 ，请你返回 最少侧跳次数 。
+
+注意：点 0 处和点 n 处的任一跑道都不会有障碍。
+
+ 
+
+示例 1：
+
+
+输入：obstacles = [0,1,2,3,0]
+输出：2 
+解释：最优方案如上图箭头所示。总共有 2 次侧跳（红色箭头）。
+注意，这只青蛙只有当侧跳时才可以跳过障碍（如上图点 2 处所示）。
+示例 2：
+
+
+输入：obstacles = [0,1,1,3,3,0]
+输出：0
+解释：跑道 2 没有任何障碍，所以不需要任何侧跳。
+示例 3：
+
+
+输入：obstacles = [0,2,1,0,3,0]
+输出：2
+解释：最优方案如上图所示。总共有 2 次侧跳。
+ 
+
+提示：
+
+obstacles.length == n + 1
+1 <= n <= 5 * 105
+0 <= obstacles[i] <= 3
+obstacles[0] == obstacles[n] == 0
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/minimum-sideway-jumps
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public int minSideJumps(int[] obstacles) {
+
+    }
+}
+```
+
+#### [1815. 得到新鲜甜甜圈的最多组数](https://leetcode.cn/problems/maximum-number-of-groups-getting-fresh-donuts/)
+
+```
+有一个甜甜圈商店，每批次都烤 batchSize 个甜甜圈。这个店铺有个规则，就是在烤一批新的甜甜圈时，之前 所有 甜甜圈都必须已经全部销售完毕。给你一个整数 batchSize 和一个整数数组 groups ，数组中的每个整数都代表一批前来购买甜甜圈的顾客，其中 groups[i] 表示这一批顾客的人数。每一位顾客都恰好只要一个甜甜圈。
+
+当有一批顾客来到商店时，他们所有人都必须在下一批顾客来之前购买完甜甜圈。如果一批顾客中第一位顾客得到的甜甜圈不是上一组剩下的，那么这一组人都会很开心。
+
+你可以随意安排每批顾客到来的顺序。请你返回在此前提下，最多 有多少组人会感到开心。
+
+ 
+
+示例 1：
+
+输入：batchSize = 3, groups = [1,2,3,4,5,6]
+输出：4
+解释：你可以将这些批次的顾客顺序安排为 [6,2,4,5,1,3] 。那么第 1，2，4，6 组都会感到开心。
+示例 2：
+
+输入：batchSize = 4, groups = [1,3,2,5,2,2,1,6]
+输出：4
+ 
+
+提示：
+
+1 <= batchSize <= 9
+1 <= groups.length <= 30
+1 <= groups[i] <= 109
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/maximum-number-of-groups-getting-fresh-donuts
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public int maxHappyGroups(int batchSize, int[] groups) {
+
+    }
+}
+```
+
+#### [2303. 计算应缴税款总额](https://leetcode.cn/problems/calculate-amount-paid-in-taxes/)
+
+```
+给你一个下标从 0 开始的二维整数数组 brackets ，其中 brackets[i] = [upperi, percenti] ，表示第 i 个税级的上限是 upperi ，征收的税率为 percenti 。税级按上限 从低到高排序（在满足 0 < i < brackets.length 的前提下，upperi-1 < upperi）。
+
+税款计算方式如下：
+
+不超过 upper0 的收入按税率 percent0 缴纳
+接着 upper1 - upper0 的部分按税率 percent1 缴纳
+然后 upper2 - upper1 的部分按税率 percent2 缴纳
+以此类推
+给你一个整数 income 表示你的总收入。返回你需要缴纳的税款总额。与标准答案误差不超 10-5 的结果将被视作正确答案。
+
+ 
+
+示例 1：
+
+输入：brackets = [[3,50],[7,10],[12,25]], income = 10
+输出：2.65000
+解释：
+前 $3 的税率为 50% 。需要支付税款 $3 * 50% = $1.50 。
+接下来 $7 - $3 = $4 的税率为 10% 。需要支付税款 $4 * 10% = $0.40 。
+最后 $10 - $7 = $3 的税率为 25% 。需要支付税款 $3 * 25% = $0.75 。
+需要支付的税款总计 $1.50 + $0.40 + $0.75 = $2.65 。
+示例 2：
+
+输入：brackets = [[1,0],[4,25],[5,50]], income = 2
+输出：0.25000
+解释：
+前 $1 的税率为 0% 。需要支付税款 $1 * 0% = $0 。
+剩下 $1 的税率为 25% 。需要支付税款 $1 * 25% = $0.25 。
+需要支付的税款总计 $0 + $0.25 = $0.25 。
+示例 3：
+
+输入：brackets = [[2,50]], income = 0
+输出：0.00000
+解释：
+没有收入，无需纳税，需要支付的税款总计 $0 。
+ 
+
+提示：
+
+1 <= brackets.length <= 100
+1 <= upperi <= 1000
+0 <= percenti <= 100
+0 <= income <= 1000
+upperi 按递增顺序排列
+upperi 中的所有值 互不相同
+最后一个税级的上限大于等于 income
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/calculate-amount-paid-in-taxes
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public double calculateTax(int[][] brackets, int income) {
+
+    }
+}
+```
+
+#### [1828. 统计一个圆中点的数目](https://leetcode.cn/problems/queries-on-number-of-points-inside-a-circle/)
+
+```
+给你一个数组 points ，其中 points[i] = [xi, yi] ，表示第 i 个点在二维平面上的坐标。多个点可能会有 相同 的坐标。
+
+同时给你一个数组 queries ，其中 queries[j] = [xj, yj, rj] ，表示一个圆心在 (xj, yj) 且半径为 rj 的圆。
+
+对于每一个查询 queries[j] ，计算在第 j 个圆 内 点的数目。如果一个点在圆的 边界上 ，我们同样认为它在圆 内 。
+
+请你返回一个数组 answer ，其中 answer[j]是第 j 个查询的答案。
+
+ 
+
+示例 1：
+
+
+输入：points = [[1,3],[3,3],[5,3],[2,2]], queries = [[2,3,1],[4,3,1],[1,1,2]]
+输出：[3,2,2]
+解释：所有的点和圆如上图所示。
+queries[0] 是绿色的圆，queries[1] 是红色的圆，queries[2] 是蓝色的圆。
+示例 2：
+
+
+输入：points = [[1,1],[2,2],[3,3],[4,4],[5,5]], queries = [[1,2,2],[2,2,2],[4,3,2],[4,3,3]]
+输出：[2,3,2,4]
+解释：所有的点和圆如上图所示。
+queries[0] 是绿色的圆，queries[1] 是红色的圆，queries[2] 是蓝色的圆，queries[3] 是紫色的圆。
+ 
+
+提示：
+
+1 <= points.length <= 500
+points[i].length == 2
+0 <= x​​​​​​i, y​​​​​​i <= 500
+1 <= queries.length <= 500
+queries[j].length == 3
+0 <= xj, yj <= 500
+1 <= rj <= 500
+所有的坐标都是整数。
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/queries-on-number-of-points-inside-a-circle
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public int[] countPoints(int[][] points, int[][] queries) {
+
+    }
+}
+```
+
+#### [1632. 矩阵转换后的秩](https://leetcode.cn/problems/rank-transform-of-a-matrix/)
+
+```
+给你一个 m x n 的矩阵 matrix ，请你返回一个新的矩阵 answer ，其中 answer[row][col] 是 matrix[row][col] 的秩。
+
+每个元素的 秩 是一个整数，表示这个元素相对于其他元素的大小关系，它按照如下规则计算：
+
+秩是从 1 开始的一个整数。
+如果两个元素 p 和 q 在 同一行 或者 同一列 ，那么：
+如果 p < q ，那么 rank(p) < rank(q)
+如果 p == q ，那么 rank(p) == rank(q)
+如果 p > q ，那么 rank(p) > rank(q)
+秩 需要越 小 越好。
+题目保证按照上面规则 answer 数组是唯一的。
+
+ 
+
+示例 1：
+
+
+输入：matrix = [[1,2],[3,4]]
+输出：[[1,2],[2,3]]
+解释：
+matrix[0][0] 的秩为 1 ，因为它是所在行和列的最小整数。
+matrix[0][1] 的秩为 2 ，因为 matrix[0][1] > matrix[0][0] 且 matrix[0][0] 的秩为 1 。
+matrix[1][0] 的秩为 2 ，因为 matrix[1][0] > matrix[0][0] 且 matrix[0][0] 的秩为 1 。
+matrix[1][1] 的秩为 3 ，因为 matrix[1][1] > matrix[0][1]， matrix[1][1] > matrix[1][0] 且 matrix[0][1] 和 matrix[1][0] 的秩都为 2 。
+示例 2：
+
+
+输入：matrix = [[7,7],[7,7]]
+输出：[[1,1],[1,1]]
+示例 3：
+
+
+输入：matrix = [[20,-21,14],[-19,4,19],[22,-47,24],[-19,4,19]]
+输出：[[4,2,3],[1,3,4],[5,1,6],[1,3,4]]
+示例 4：
+
+
+输入：matrix = [[7,3,6],[1,4,5],[9,8,2]]
+输出：[[5,1,4],[1,2,3],[6,3,1]]
+ 
+
+提示：
+
+m == matrix.length
+n == matrix[i].length
+1 <= m, n <= 500
+-109 <= matrix[row][col] <= 109
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/rank-transform-of-a-matrix
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public int[][] matrixRankTransform(int[][] matrix) {
+
+    }
+}
+```
+
+#### [1663. 具有给定数值的最小字符串](https://leetcode.cn/problems/smallest-string-with-a-given-numeric-value/)
+
+```
+小写字符 的 数值 是它在字母表中的位置（从 1 开始），因此 a 的数值为 1 ，b 的数值为 2 ，c 的数值为 3 ，以此类推。
+
+字符串由若干小写字符组成，字符串的数值 为各字符的数值之和。例如，字符串 "abe" 的数值等于 1 + 2 + 5 = 8 。
+
+给你两个整数 n 和 k 。返回 长度 等于 n 且 数值 等于 k 的 字典序最小 的字符串。
+
+注意，如果字符串 x 在字典排序中位于 y 之前，就认为 x 字典序比 y 小，有以下两种情况：
+
+x 是 y 的一个前缀；
+如果 i 是 x[i] != y[i] 的第一个位置，且 x[i] 在字母表中的位置比 y[i] 靠前。
+ 
+
+示例 1：
+
+输入：n = 3, k = 27
+输出："aay"
+解释：字符串的数值为 1 + 1 + 25 = 27，它是数值满足要求且长度等于 3 字典序最小的字符串。
+示例 2：
+
+输入：n = 5, k = 73
+输出："aaszz"
+ 
+
+提示：
+
+1 <= n <= 105
+n <= k <= 26 * n
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/smallest-string-with-a-given-numeric-value
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public String getSmallestString(int n, int k) {
+
+    }
+}
+```
+
+#### [2309. 兼具大小写的最好英文字母](https://leetcode.cn/problems/greatest-english-letter-in-upper-and-lower-case/)
+
+```
+给你一个由英文字母组成的字符串 s ，请你找出并返回 s 中的 最好 英文字母。返回的字母必须为大写形式。如果不存在满足条件的字母，则返回一个空字符串。
+
+最好 英文字母的大写和小写形式必须 都 在 s 中出现。
+
+英文字母 b 比另一个英文字母 a 更好 的前提是：英文字母表中，b 在 a 之 后 出现。
+
+ 
+
+示例 1：
+
+输入：s = "lEeTcOdE"
+输出："E"
+解释：
+字母 'E' 是唯一一个大写和小写形式都出现的字母。
+示例 2：
+
+输入：s = "arRAzFif"
+输出："R"
+解释：
+字母 'R' 是大写和小写形式都出现的最好英文字母。
+注意 'A' 和 'F' 的大写和小写形式也都出现了，但是 'R' 比 'F' 和 'A' 更好。
+示例 3：
+
+输入：s = "AbCdEfGhIjK"
+输出：""
+解释：
+不存在大写和小写形式都出现的字母。
+ 
+
+提示：
+
+1 <= s.length <= 1000
+s 由小写和大写英文字母组成
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/greatest-english-letter-in-upper-and-lower-case
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public String greatestLetter(String s) {
+
+    }
+}
+```
+
+#### [1664. 生成平衡数组的方案数](https://leetcode.cn/problems/ways-to-make-a-fair-array/)
+
+```
+给你一个整数数组 nums 。你需要选择 恰好 一个下标（下标从 0 开始）并删除对应的元素。请注意剩下元素的下标可能会因为删除操作而发生改变。
+
+比方说，如果 nums = [6,1,7,4,1] ，那么：
+
+选择删除下标 1 ，剩下的数组为 nums = [6,7,4,1] 。
+选择删除下标 2 ，剩下的数组为 nums = [6,1,4,1] 。
+选择删除下标 4 ，剩下的数组为 nums = [6,1,7,4] 。
+如果一个数组满足奇数下标元素的和与偶数下标元素的和相等，该数组就是一个 平衡数组 。
+
+请你返回删除操作后，剩下的数组 nums 是 平衡数组 的 方案数 。
+
+ 
+
+示例 1：
+
+输入：nums = [2,1,6,4]
+输出：1
+解释：
+删除下标 0 ：[1,6,4] -> 偶数元素下标为：1 + 4 = 5 。奇数元素下标为：6 。不平衡。
+删除下标 1 ：[2,6,4] -> 偶数元素下标为：2 + 4 = 6 。奇数元素下标为：6 。平衡。
+删除下标 2 ：[2,1,4] -> 偶数元素下标为：2 + 4 = 6 。奇数元素下标为：1 。不平衡。
+删除下标 3 ：[2,1,6] -> 偶数元素下标为：2 + 6 = 8 。奇数元素下标为：1 。不平衡。
+只有一种让剩余数组成为平衡数组的方案。
+示例 2：
+
+输入：nums = [1,1,1]
+输出：3
+解释：你可以删除任意元素，剩余数组都是平衡数组。
+示例 3：
+
+输入：nums = [1,2,3]
+输出：0
+解释：不管删除哪个元素，剩下数组都不是平衡数组。
+ 
+
+提示：
+
+1 <= nums.length <= 105
+1 <= nums[i] <= 104
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/ways-to-make-a-fair-array
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public int waysToMakeFair(int[] nums) {
+
+    }
+}
+```
+
+#### [2315. 统计星号](https://leetcode.cn/problems/count-asterisks/)
+
+```
+给你一个字符串 s ，每 两个 连续竖线 '|' 为 一对 。换言之，第一个和第二个 '|' 为一对，第三个和第四个 '|' 为一对，以此类推。
+
+请你返回 不在 竖线对之间，s 中 '*' 的数目。
+
+注意，每个竖线 '|' 都会 恰好 属于一个对。
+
+ 
+
+示例 1：
+
+输入：s = "l|*e*et|c**o|*de|"
+输出：2
+解释：不在竖线对之间的字符加粗加斜体后，得到字符串："l|*e*et|c**o|*de|" 。
+第一和第二条竖线 '|' 之间的字符不计入答案。
+同时，第三条和第四条竖线 '|' 之间的字符也不计入答案。
+不在竖线对之间总共有 2 个星号，所以我们返回 2 。
+示例 2：
+
+输入：s = "iamprogrammer"
+输出：0
+解释：在这个例子中，s 中没有星号。所以返回 0 。
+示例 3：
+
+输入：s = "yo|uar|e**|b|e***au|tifu|l"
+输出：5
+解释：需要考虑的字符加粗加斜体后："yo|uar|e**|b|e***au|tifu|l" 。不在竖线对之间总共有 5 个星号。所以我们返回 5 。
+ 
+
+提示：
+
+1 <= s.length <= 1000
+s 只包含小写英文字母，竖线 '|' 和星号 '*' 。
+s 包含 偶数 个竖线 '|' 。
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/count-asterisks
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public int countAsterisks(String s) {
+
+    }
+}
+```
+
+#### [1669. 合并两个链表](https://leetcode.cn/problems/merge-in-between-linked-lists/)
+
+```
+给你两个链表 list1 和 list2 ，它们包含的元素分别为 n 个和 m 个。
+
+请你将 list1 中下标从 a 到 b 的全部节点都删除，并将list2 接在被删除节点的位置。
+
+下图中蓝色边和节点展示了操作后的结果：
+
+
+请你返回结果链表的头指针。
+
+ 
+
+示例 1：
+
+
+
+输入：list1 = [0,1,2,3,4,5], a = 3, b = 4, list2 = [1000000,1000001,1000002]
+输出：[0,1,2,1000000,1000001,1000002,5]
+解释：我们删除 list1 中下标为 3 和 4 的两个节点，并将 list2 接在该位置。上图中蓝色的边和节点为答案链表。
+示例 2：
+
+
+输入：list1 = [0,1,2,3,4,5,6], a = 2, b = 5, list2 = [1000000,1000001,1000002,1000003,1000004]
+输出：[0,1,1000000,1000001,1000002,1000003,1000004,6]
+解释：上图中蓝色的边和节点为答案链表。
+ 
+
+提示：
+
+3 <= list1.length <= 104
+1 <= a <= b < list1.length - 1
+1 <= list2.length <= 104
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/merge-in-between-linked-lists
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode mergeInBetween(ListNode list1, int a, int b, ListNode list2) {
+        
+    }
+}
+```
+
+#### [2319. 判断矩阵是否是一个 X 矩阵](https://leetcode.cn/problems/check-if-matrix-is-x-matrix/)
+
+```
+如果一个正方形矩阵满足下述 全部 条件，则称之为一个 X 矩阵 ：
+
+矩阵对角线上的所有元素都 不是 0
+矩阵中所有其他元素都是 0
+给你一个大小为 n x n 的二维整数数组 grid ，表示一个正方形矩阵。如果 grid 是一个 X 矩阵 ，返回 true ；否则，返回 false 。
+
+ 
+
+示例 1：
+
+
+输入：grid = [[2,0,0,1],[0,3,1,0],[0,5,2,0],[4,0,0,2]]
+输出：true
+解释：矩阵如上图所示。
+X 矩阵应该满足：绿色元素（对角线上）都不是 0 ，红色元素都是 0 。
+因此，grid 是一个 X 矩阵。
+示例 2：
+
+
+输入：grid = [[5,7,0],[0,3,1],[0,5,0]]
+输出：false
+解释：矩阵如上图所示。
+X 矩阵应该满足：绿色元素（对角线上）都不是 0 ，红色元素都是 0 。
+因此，grid 不是一个 X 矩阵。
+ 
+
+提示：
+
+n == grid.length == grid[i].length
+3 <= n <= 100
+0 <= grid[i][j] <= 105
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/check-if-matrix-is-x-matrix
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+```
+
+```java
+class Solution {
+    public boolean checkXMatrix(int[][] grid) {
+
+    }
+}
+```
+
+### Feb
+
+### Mar
 
 #### [2373. 矩阵中的局部最大值](https://leetcode.cn/problems/largest-local-values-in-a-matrix/)
 
