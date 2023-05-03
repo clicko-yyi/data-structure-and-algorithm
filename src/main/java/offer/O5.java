@@ -22,6 +22,24 @@ public class O5 {
                 sb.append(c);
             }
         }
+
         return sb.toString();
+    }
+
+
+    public String replaceSpace_sulotion_2(String s) {
+        int size = 0;
+        char[] ret = new char[s.length() * 3];
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == ' ') {
+                ret[size++] = '%';
+                ret[size++] = '2';
+                ret[size++] = '0';
+            } else {
+                ret[size++] = c;
+            }
+        }
+        return new String(ret, 0, size);
     }
 }
