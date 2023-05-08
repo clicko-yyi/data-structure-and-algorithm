@@ -1,45 +1,44 @@
 package offer;
+/*
+[剑指 Offer 05. 替换空格](https://leetcode.cn/problems/ti-huan-kong-ge-lcof/)
 
+示例 1：
+
+输入：s = "We are happy."
+输出："We%20are%20happy."
+
+ */
 public class O5 {
-
     public static void main(String[] args) {
-        String x = "We are happy.";
-
-
-        O5 test = new O5();
-        System.out.println(test.replaceSpace(x));
+        O5 o5 = new O5();
+        System.out.println(o5.replaceSpace_solution_1("We are happy."));
     }
 
-    public String replaceSpace(String s) {
-        final String replace = "%20";
-
-        StringBuffer sb = new StringBuffer();
-
-        for (char c : s.toCharArray()) {
-            if(c == ' '){
-                sb.append(replace);
-            }else{
-                sb.append(c);
-            }
-        }
-
-        return sb.toString();
-    }
-
-
-    public String replaceSpace_sulotion_2(String s) {
+    public String replaceSpace_solution_1(String s) {
+        int length = s.length();
+        char[] array = new char[length * 3];
         int size = 0;
-        char[] ret = new char[s.length() * 3];
-        for (int i = 0; i < s.length(); i++) {
+        for (int i = 0; i < length; i++) {
             char c = s.charAt(i);
             if (c == ' ') {
-                ret[size++] = '%';
-                ret[size++] = '2';
-                ret[size++] = '0';
+                array[size++] = '%';
+                array[size++] = '2';
+                array[size++] = '0';
             } else {
-                ret[size++] = c;
+                array[size++] = c;
             }
         }
-        return new String(ret, 0, size);
+        String newStr = new String(array, 0, size);
+        return newStr;
+    }
+
+    public String replaceSpace_solution_2(String s) {
+        StringBuilder res = new StringBuilder();
+        for(Character c : s.toCharArray())
+        {
+            if(c == ' ') res.append("%20");
+            else res.append(c);
+        }
+        return res.toString();
     }
 }

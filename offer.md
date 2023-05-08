@@ -75,14 +75,8 @@
 
 #### [剑指 Offer 04. 二维数组中的查找](https://leetcode.cn/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/)
 
-notes：
-
-1. 二分查找
-
 ```
-在一个 n * m 的二维数组中，每一行都按照从左到右非递减的顺序排序，每一列都按照从上到下非递减的顺序排序。请完成一个高效的函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。
-
-
+在一个 n * m 的二维数组中，每一行都按照从左到右 非递减 的顺序排序，每一列都按照从上到下 非递减 的顺序排序。请完成一个高效的函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。
 
 示例:
 
@@ -95,66 +89,110 @@ notes：
   [10, 13, 14, 17, 24],
   [18, 21, 23, 26, 30]
 ]
-给定 target=5，返回true。
+给定 target = 5，返回 true。
+给定 target = 20，返回 false。
 
-给定target=20，返回false。
-
-
-
+ 
 限制：
-
 0 <= n <= 1000
 
 0 <= m <= 1000
-
-
-
-来源：力扣（LeetCode）
-链接：https://leetcode.cn/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
-
-
 
 ```JAVA
-public boolean findNumberIn2DArray(int[][] matrix, int target) {
-        boolean ret = false;
 
-        int colIndex = 0, rowIndex = matrix.length - 1;
+/*
+[剑指 Offer 04. 二维数组中的查找](https://leetcode.cn/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/)
 
-        /*
-         rowIndex >= 0 && colIndex < matrix[0].length，中两个条件调换顺序不能改变
-         colIndex < matrix[0].length && rowIndex >= 0
-         */
-        while (rowIndex >= 0 && colIndex < matrix[0].length) {
-            if (target > matrix[rowIndex][colIndex]) {
-                colIndex++;
-            } else if (target < matrix[rowIndex][colIndex]) {
-                rowIndex--;
-            } else {
-                ret = true;
-                break;
+现有矩阵 matrix 如下：
+
+[
+  [1,   4,  7, 11, 15],
+  [2,   5,  8, 12, 19],
+  [3,   6,  9, 16, 22],
+  [10, 13, 14, 17, 24],
+  [18, 21, 23, 26, 30]
+]
+给定 target=5，返回true。
+给定target=20，返回false。
+ */
+public class O4 {
+    public static void main(String[] args) {
+        int[][] matrix = new int[][]{
+                {1,   4,  7, 11, 15},
+                {2,   5,  8, 12, 19},
+                {3,   6,  9, 16, 22},
+                {10, 13, 14, 17, 24},
+                {18, 21, 23, 26, 30}};
+        O4 o4 = new O4();
+        System.out.println(o4.findNumberIn2DArray_solution_1(matrix, 5));
+        System.out.println(o4.findNumberIn2DArray_solution_1(matrix, 20));
+    }
+
+    public boolean findNumberIn2DArray_solution_1(int[][] matrix, int target) {
+        int i = matrix.length - 1, j = 0;
+        while(i >= 0 && j < matrix[0].length)
+        {
+            if(matrix[i][j] > target) i--;
+            else if(matrix[i][j] < target) j++;
+            else return true;
+        }
+        return false;
+    }
+
+    public boolean findNumberIn2DArray_solution_2(int[][] matrix, int target) {
+        for (int[] row : matrix) {
+            int index = search(row, target);
+            if (index >= 0) {
+                return true;
             }
         }
+        return false;
+    }
 
-        return ret;
+    public int search(int[] nums, int target) {
+        int low = 0, high = nums.length - 1;
+        while (low <= high) {
+            int mid = (high - low) / 2 + low;
+            int num = nums[mid];
+            if (num == target) {
+                return mid;
+            } else if (num > target) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return -1;
+    }
+
+    public boolean findNumberIn2DArray_solution_3(int[][] matrix, int target) {
+        StringBuffer sb = new StringBuffer();
+        sb.append(",");
+        for(int i=0;i<matrix.length;i++) {
+            for(int j=0;j<matrix[0].length;j++) {
+                sb.append(matrix[i][j]);
+                sb.append(",");
+            }
+        }
+        return sb.toString().contains(","+target+",");
+    }
+
 }
 ```
-
-
 
 #### [剑指 Offer 05. 替换空格](https://leetcode.cn/problems/ti-huan-kong-ge-lcof/)
 
 ```
 请实现一个函数，把字符串 s 中的每个空格替换成"%20"。
 
-
+ 
 
 示例 1：
 
 输入：s = "We are happy."
 输出："We%20are%20happy."
-
+ 
 
 限制：
 
@@ -165,38 +203,62 @@ public boolean findNumberIn2DArray(int[][] matrix, int target) {
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-
-
 ```JAVA
-public String replaceSpace(String s) {
-    int size = 0;
-    char[] ret = new char[s.length() * 3];
-    for (int i = 0; i < s.length(); i++) {
-        char c = s.charAt(i);
-        if (c == ' ') {
-            ret[size++] = '%';
-            ret[size++] = '2';
-            ret[size++] = '0';
-        } else {
-            ret[size++] = c;
-        }
+/*
+[剑指 Offer 05. 替换空格](https://leetcode.cn/problems/ti-huan-kong-ge-lcof/)
+
+示例 1：
+
+输入：s = "We are happy."
+输出："We%20are%20happy."
+
+ */
+public class O5 {
+    public static void main(String[] args) {
+        O5 o5 = new O5();
+        System.out.println(o5.replaceSpace_solution_1("We are happy."));
     }
-    return new String(ret, 0, size);
+
+    public String replaceSpace_solution_1(String s) {
+        int length = s.length();
+        char[] array = new char[length * 3];
+        int size = 0;
+        for (int i = 0; i < length; i++) {
+            char c = s.charAt(i);
+            if (c == ' ') {
+                array[size++] = '%';
+                array[size++] = '2';
+                array[size++] = '0';
+            } else {
+                array[size++] = c;
+            }
+        }
+        String newStr = new String(array, 0, size);
+        return newStr;
+    }
+
+    public String replaceSpace_solution_2(String s) {
+        StringBuilder res = new StringBuilder();
+        for(Character c : s.toCharArray())
+        {
+            if(c == ' ') res.append("%20");
+            else res.append(c);
+        }
+        return res.toString();
+    }
 }
 ```
-
-
 
 #### [剑指 Offer 11. 旋转数组的最小数字](https://leetcode.cn/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/)
 
 ```
 把一个数组最开始的若干个元素搬到数组的末尾，我们称之为数组的旋转。
 
-给你一个可能存在重复元素值的数组numbers，它原来是一个升序排列的数组，并按上述情形进行了一次旋转。请返回旋转数组的最小元素。例如，数组[3,4,5,1,2] 为 [1,2,3,4,5] 的一次旋转，该数组的最小值为 1。
+给你一个可能存在 重复 元素值的数组 numbers ，它原来是一个升序排列的数组，并按上述情形进行了一次旋转。请返回旋转数组的最小元素。例如，数组 [3,4,5,1,2] 为 [1,2,3,4,5] 的一次旋转，该数组的最小值为 1。  
 
 注意，数组 [a[0], a[1], a[2], ..., a[n-1]] 旋转一次 的结果为数组 [a[n-1], a[0], a[1], a[2], ..., a[n-2]] 。
 
-
+ 
 
 示例 1：
 
@@ -206,7 +268,7 @@ public String replaceSpace(String s) {
 
 输入：numbers = [2,2,2,0,1]
 输出：0
-
+ 
 
 提示：
 
@@ -220,27 +282,57 @@ numbers 原来是一个升序排序的数组，并进行了 1 至 n 次旋转
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-
-
 ```JAVA
-public int minArray(int[] numbers) {
-    int low = 0, high = numbers.length - 1;
-    int pivot;
-    while (low < high) {
-        pivot = low + ((high - low) >> 1);
-        if (numbers[pivot] < numbers[high]) {
-            high = pivot;
-        } else if (numbers[pivot] > numbers[high]) {
-            low = pivot + 1;
-        } else {
-            high = high - 1;
-        }
+import java.util.Arrays;
+
+/*
+[剑指 Offer 11. 旋转数组的最小数字](https://leetcode.cn/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/)
+
+示例 1：
+
+输入：numbers = [3,4,5,1,2]
+输出：1
+示例 2：
+
+输入：numbers = [2,2,2,0,1]
+输出：0
+ */
+public class O11 {
+    public static void main(String[] args) {
+        O11 o11 = new O11();
+        System.out.println(o11.minArray_solution_1(new int[]{3, 4, 5, 1, 2}));
+        System.out.println(o11.minArray_solution_1(new int[]{2, 2, 2, 0, 1}));
     }
-    return numbers[low];
+
+    public int minArray_solution_1(int[] numbers) {
+        Arrays.sort(numbers);
+        return numbers[0];
+    }
+
+    public int minArray_solution_2(int[] numbers) {
+        for(int i=1;i<numbers.length;i++)
+            if(numbers[i]<numbers[i-1]) return numbers[i];
+
+        return numbers[0];
+    }
+
+    public int minArray_solution_3(int[] numbers) {
+        int low = 0;
+        int high = numbers.length - 1;
+        while (low < high) {
+            int pivot = low + (high - low) / 2;
+            if (numbers[pivot] < numbers[high]) {
+                high = pivot;
+            } else if (numbers[pivot] > numbers[high]) {
+                low = pivot + 1;
+            } else {
+                high -= 1;
+            }
+        }
+        return numbers[low];
+    }
 }
 ```
-
-
 
 #### [剑指 Offer 17. 打印从1到最大的n位数](https://leetcode.cn/problems/da-yin-cong-1dao-zui-da-de-nwei-shu-lcof/)
 
@@ -251,7 +343,7 @@ public int minArray(int[] numbers) {
 
 输入: n = 1
 输出: [1,2,3,4,5,6,7,8,9]
-
+ 
 
 说明：
 
@@ -263,55 +355,64 @@ n 为正整数
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-
-
 ```JAVA
-int[] res;
-int count = 0;
+/*
+[剑指 Offer 17. 打印从1到最大的n位数](https://leetcode.cn/problems/da-yin-cong-1dao-zui-da-de-nwei-shu-lcof/)
 
-public int[] printNumbers(int n) {
+示例 1:
 
-    res = new int[(int) (Math.pow(10, n) - 1)];
-    for (int limit = 1; limit <= n; limit++) {
-        for (char c = '1'; c <= '9'; c++) {
-            char[] chars = new char[limit];
-            chars[0] = c;
-            dfs(chars, 1, limit);
+输入: n = 1
+输出: [1,2,3,4,5,6,7,8,9]
+
+ */
+public class O17 {
+    int[] res;
+    int count = 0;
+
+    public int[] printNumbers(int n) {
+        res = new int[(int)Math.pow(10, n) - 1];
+        for(int digit = 1; digit < n + 1; digit++){
+            for(char first = '1'; first <= '9'; first++){
+                char[] num = new char[digit];
+                num[0] = first;
+                dfs(1, num, digit);
+            }
+        }
+        return res;
+    }
+
+    private void dfs(int index, char[] num, int digit){
+        if(index == digit){
+            res[count++] = Integer.parseInt(String.valueOf(num));
+            return;
+        }
+        for(char i = '0'; i <= '9'; i++){
+            num[index] = i;
+            dfs(index + 1, num, digit);
         }
     }
-    return res;
-}
 
-private void dfs(char[] chars, int level, int limit){
-    if (level == limit) {
-        res[count++] = Integer.valueOf(new String(chars));
-        return;
-
-    }
-
-    for(char i = '0'; i <= '9'; i++){
-        chars[level] = i;
-        dfs(chars, level + 1, limit);
+    public static void main(String[] args) {
+        O17 o17 = new O17();
+        System.out.println(o17.printNumbers(3));
     }
 
 }
 ```
-
-
 
 #### [剑指 Offer 21. 调整数组顺序使奇数位于偶数前面](https://leetcode.cn/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/)
 
 ```
 输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有奇数在数组的前半部分，所有偶数在数组的后半部分。
 
-
+ 
 
 示例：
 
-输入：nums =[1,2,3,4]
+输入：nums = [1,2,3,4]
 输出：[1,3,2,4] 
 注：[3,1,2,4] 也是正确的答案之一。
-
+ 
 
 提示：
 
@@ -323,26 +424,89 @@ private void dfs(char[] chars, int level, int limit){
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-
-
 ```JAVA
-public int[] exchange(int[] nums) {
-    int oddIndex = 0;
 
-    for (int i = 0; i < nums.length; i++) {
-        if(nums[i] % 2 == 1){
-            int tmp = nums[i];
-            nums[i] = nums[oddIndex];
-            nums[oddIndex] = tmp;
-            oddIndex++;
-        }
+/*
+[剑指 Offer 21. 调整数组顺序使奇数位于偶数前面](https://leetcode.cn/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/)
+输入：nums = [1,2,3,4]
+输出：[1,3,2,4]
+注：[3,1,2,4] 也是正确的答案之一。
+ */
+public class O21 {
+    public static void main(String[] args) {
+
     }
 
-    return nums;
+    public int[] exchange_solution_1(int[] nums) {
+        int n = nums.length, index = 0;
+        int[] res = new int[n];
+        for (int num : nums) {
+            if (num % 2 == 1) {
+                res[index++] = num;
+            }
+        }
+        for (int num : nums) {
+            if (num % 2 == 0) {
+                res[index++] = num;
+            }
+        }
+        return res;
+    }
+
+    public int[] exchange_solution_2(int[] nums) {
+        int n = nums.length;
+        int[] res = new int[n];
+        int left = 0, right = n - 1;
+        for (int num : nums) {
+            if (num % 2 == 1) {
+                res[left++] = num;
+            } else {
+                res[right--] = num;
+            }
+        }
+        return res;
+    }
+
+    public int[] exchange_solution_3(int[] nums) {
+        int left = 0, right = nums.length - 1;
+        while (left < right) {
+            while (left < right && nums[left] % 2 == 1) {
+                left++;
+            }
+            while (left < right && nums[right] % 2 == 0) {
+                right--;
+            }
+            if (left < right) {
+                int temp = nums[left];
+                nums[left] = nums[right];
+                nums[right] = temp;
+                left++;
+                right--;
+            }
+        }
+        return nums;
+    }
+
+    public int[] exchange_solution_4(int[] nums) {
+        int left=0;
+        int right=nums.length-1;
+        while(left<right){
+            int tmp;
+            while(nums[left]%2!=0&&left<right){
+                left++;
+            }
+            while(nums[right]%2==0&&right>left){
+                right--;
+            }
+            tmp = nums[left];
+            nums[left]=nums[right];
+            nums[right]=tmp;
+        }
+        return nums;
+    }
 }
+
 ```
-
-
 
 #### [剑指 Offer 29. 顺时针打印矩阵](https://leetcode.cn/problems/shun-shi-zhen-da-yin-ju-zhen-lcof/)
 
@@ -350,65 +514,112 @@ public int[] exchange(int[] nums) {
 输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字。
 
 
-
 示例 1：
-
 输入：matrix = [[1,2,3],[4,5,6],[7,8,9]]
 输出：[1,2,3,6,9,8,7,4,5]
 示例 2：
 
-输入：matrix =[[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+输入：matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
 输出：[1,2,3,4,8,12,11,10,9,5,6,7]
-
+ 
 
 限制：
 
 0 <= matrix.length <= 100
-0 <= matrix[i].length<= 100
+0 <= matrix[i].length <= 100
 
 来源：力扣（LeetCode）
 链接：https://leetcode.cn/problems/shun-shi-zhen-da-yin-ju-zhen-lcof
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-
-
 ```JAVA
-class Solution {
-    public int[] spiralOrder(int[][] matrix) {
+/*
+[剑指 Offer 29. 顺时针打印矩阵](https://leetcode.cn/problems/shun-shi-zhen-da-yin-ju-zhen-lcof/)
+示例 1：
+输入：matrix = [[1,2,3],[4,5,6],[7,8,9]]
+输出：[1,2,3,6,9,8,7,4,5]
+示例 2：
 
+输入：matrix =[[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+输出：[1,2,3,4,8,12,11,10,9,5,6,7]
+ */
+public class O29 {
+
+    public static void main(String[] args) {
+        O29 o29 = new O29();
+        int[][] x = new int[][]{{1,2,3,4},{5,6,7,8},{9,10,11,12}};
+        o29.spiralOrder_solution_1(x);
+    }
+
+    public int[] spiralOrder_solution_1(int[][] matrix) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            return new int[0];
+        }
+        int rows = matrix.length, columns = matrix[0].length;
+        boolean[][] visited = new boolean[rows][columns];
+        int total = rows * columns;
+        int[] order = new int[total];
+        int row = 0, column = 0;
+        int[][] directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+        int directionIndex = 0;
+        for (int i = 0; i < total; i++) {
+            order[i] = matrix[row][column];
+            visited[row][column] = true;
+            int nextRow = row + directions[directionIndex][0], nextColumn = column + directions[directionIndex][1];
+            if (nextRow < 0 || nextRow >= rows || nextColumn < 0 || nextColumn >= columns || visited[nextRow][nextColumn]) {
+                directionIndex = (directionIndex + 1) % 4;
+            }
+            row += directions[directionIndex][0];
+            column += directions[directionIndex][1];
+        }
+        return order;
+    }
+
+    public int[] spiralOrder_solution_2(int[][] matrix) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            return new int[0];
+        }
+        int rows = matrix.length, columns = matrix[0].length;
+        int[] order = new int[rows * columns];
+        int index = 0;
+        int left = 0, right = columns - 1, top = 0, bottom = rows - 1;
+        while (left <= right && top <= bottom) {
+            for (int column = left; column <= right; column++) {
+                order[index++] = matrix[top][column];
+            }
+            for (int row = top + 1; row <= bottom; row++) {
+                order[index++] = matrix[row][right];
+            }
+            if (left < right && top < bottom) {
+                for (int column = right - 1; column > left; column--) {
+                    order[index++] = matrix[bottom][column];
+                }
+                for (int row = bottom; row > top; row--) {
+                    order[index++] = matrix[row][left];
+                }
+            }
+            left++;
+            right--;
+            top++;
+            bottom--;
+        }
+        return order;
     }
 }
 ```
-
-
-
-
-
-
-
-
-
-notes:
-
-1. 没有做出来，就是感觉很绕，理不清楚
 
 #### [剑指 Offer 39. 数组中出现次数超过一半的数字](https://leetcode.cn/problems/shu-zu-zhong-chu-xian-ci-shu-chao-guo-yi-ban-de-shu-zi-lcof/)
 
 ```
 数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。
 
-
-
 你可以假设数组是非空的，并且给定的数组总是存在多数元素。
 
-
-
-示例1:
-
+示例 1:
 输入: [1, 2, 3, 2, 2, 2, 5, 4, 2]
 输出: 2
-
+ 
 
 限制：
 
@@ -419,38 +630,135 @@ notes:
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-
-
 ```JAVA
-class Solution {
-    public int majorityElement(int[] nums) {
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
 
+/*
+[剑指 Offer 39. 数组中出现次数超过一半的数字](https://leetcode.cn/problems/shu-zu-zhong-chu-xian-ci-shu-chao-guo-yi-ban-de-shu-zi-lcof/)
+数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。
+你可以假设数组是非空的，并且给定的数组总是存在多数元素。
+
+示例1:
+输入: [1, 2, 3, 2, 2, 2, 5, 4, 2]
+输出: 2
+
+*/
+public class O39 {
+    public static void main(String[] args) {
+        int[] arr = new int[]{1, 2, 3, 2, 2, 2, 5, 4, 2};
+        O39 o39 = new O39();
+        System.out.println(o39.majorityElement_solution_4(arr));
+    }
+
+    public int majorityElement_solution_1(int[] nums) {
+        Map<Integer, Integer> map = new HashMap<>(nums.length);
+        for (int num : nums) { map.put(num, map.getOrDefault(num, 0) + 1); }
+
+        Map.Entry<Integer, Integer> maxEntry = null;
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if(maxEntry == null || maxEntry.getValue() < entry.getValue()){
+                maxEntry = entry;
+            }
+        }
+        return maxEntry.getKey();
+    }
+
+    public int majorityElement_solution_2(int[] nums) {
+        Arrays.sort(nums);
+        return nums[nums.length/2];
+    }
+
+    public int majorityElement_solution_3(int[] nums) {
+        Random random = new Random();
+
+        while(true){
+            int index = randRange(random, 0, nums.length);
+            if(countOccurences(nums, nums[index]) > nums.length /2){
+                return nums[index];
+            }
+        }
+    }
+    private int randRange(Random random, int min, int max){
+        return random.nextInt(max - min)  + min;
+    }
+
+    private int countOccurences(int[] nums, int target) {
+        int count = 0;
+        for (int num : nums) {
+            if (target == num) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int majorityElement_solution_4(int[] nums) {
+        return majorityElement_recursion(nums, 0, nums.length-1);
+    }
+
+    private int majorityElement_recursion(int[] nums, int lo, int hi){
+        if (lo == hi) {
+            return nums[lo];
+        }
+
+        int mid = lo + ((hi - lo) >> 1);
+
+        int left = majorityElement_recursion(nums, lo, mid);
+        int right = majorityElement_recursion(nums, mid+1, hi);
+        if (left == right) {
+            return left;
+        }
+
+        int leftCount = countOccurencesRange(nums, left, lo, mid);
+        int rightCount = countOccurencesRange(nums, right, mid+1, hi);
+        return leftCount > rightCount ? left : right;
+    }
+
+    private int countOccurencesRange(int[] nums, int target, int lo, int hi) {
+        int count = 0;
+        for (int i = lo; i <= hi; i++) {
+            if(nums[i] == target){
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int majorityElement_solution_5(int[] nums) {
+        int count = 0;
+        int candidate = -1;
+        for (int num : nums) {
+            if (count == 0) {
+                candidate = num;
+            }
+            if (candidate == num) {
+                count++;
+            }else{
+                count--;
+            }
+        }
+        return candidate;
     }
 }
 ```
-
-
-
-
-
-
 
 #### [面试题45. 把数组排成最小的数](https://leetcode.cn/problems/ba-shu-zu-pai-cheng-zui-xiao-de-shu-lcof/)
 
 ```
 输入一个非负整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。
 
-
-
 示例 1:
 
 输入: [10,2]
 输出: "102"
-示例2:
+示例 2:
 
 输入: [3,30,34,5,9]
 输出: "3033459"
-
+ 
 
 提示:
 
@@ -465,85 +773,190 @@ class Solution {
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-
-
 ```JAVA
-class Solution {
-    public String minNumber(int[] nums) {
+import java.util.Arrays;
 
+/*
+[面试题45. 把数组排成最小的数](https://leetcode.cn/problems/ba-shu-zu-pai-cheng-zui-xiao-de-shu-lcof/)
+输入一个非负整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。
+
+示例 1:
+输入: [10,2]
+输出: "102"
+
+示例2:
+输入: [3,30,34,5,9]
+输出: "3033459"
+
+ */
+public class O45 {
+    public static void main(String[] args) {
+        int[] arr = new int[]{3,30,34,5,9};
+        O45 o45 = new O45();
+        System.out.println(o45.minNumber(arr));
+    }
+
+    public String minNumber(int[] nums) {
+        String[] numsString = new String[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            numsString[i] = String.valueOf(nums[i]);
+        }
+        Arrays.sort(numsString, (x, y) -> (x + y).compareTo(y + x));
+        return String.join("", numsString);
     }
 }
 ```
-
-
-
-
-
-
-
-
 
 #### [剑指 Offer 53 - I. 在排序数组中查找数字 I](https://leetcode.cn/problems/zai-pai-xu-shu-zu-zhong-cha-zhao-shu-zi-lcof/)
 
 ```
 统计一个数字在排序数组中出现的次数。
 
-
-
 示例 1:
 
 输入: nums = [5,7,7,8,8,10], target = 8
 输出: 2
-示例2:
+示例 2:
 
 输入: nums = [5,7,7,8,8,10], target = 6
 输出: 0
-
+ 
 
 提示：
 
 0 <= nums.length <= 105
--109<= nums[i]<= 109
-nums是一个非递减数组
--109<= target<= 109
+-109 <= nums[i] <= 109
+nums 是一个非递减数组
+-109 <= target <= 109
 
 来源：力扣（LeetCode）
 链接：https://leetcode.cn/problems/zai-pai-xu-shu-zu-zhong-cha-zhao-shu-zi-lcof
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-
-
 ```JAVA
-class Solution {
-    public int search(int[] nums, int target) {
+/*
+[剑指 Offer 53 - I. 在排序数组中查找数字 I](https://leetcode.cn/problems/zai-pai-xu-shu-zu-zhong-cha-zhao-shu-zi-lcof/)
+统计一个数字在排序数组中出现的次数。
 
+示例 1:
+输入: nums = [5,7,7,8,8,10], target = 8
+输出: 2
+ */
+public class O53n1 {
+    public static void main(String[] args) {
+        int[] arr = new int[]{5, 7, 7, 8, 8, 10};
+        O53n1 o53n1 = new O53n1();
+        System.out.println(o53n1.search_solution_1(arr, 7));
+        System.out.println(o53n1.search_solution_1(arr, 8));
+        System.out.println(o53n1.search_solution_1(arr, 5));
+        System.out.println(o53n1.search_solution_1(arr, 6));
+    }
+
+    public int search_solution_1(int[] nums, int target) {
+        int lo = 0, hi = nums.length - 1;
+        int index = -1;
+        int count = 0;
+        while (lo <= hi) {
+            int mid = lo + ((hi - lo) >> 1);
+            if (nums[mid] > target) {
+                hi = mid - 1;
+            } else if (nums[mid] < target) {
+                lo = mid + 1;
+            } else {
+                if (mid - 1 >= 0 && nums[mid] == nums[mid - 1]) {
+                    hi = mid - 1;
+                } else {
+                    index = mid;
+                    break;
+                }
+            }
+        }
+
+        if (index == -1) {
+            return count;
+        }
+
+
+        for (int i = index; i < nums.length; i++) {
+            if (nums[i] == target) {
+                count++;
+            } else {
+                break;
+            }
+        }
+        return count;
+    }
+
+    public int search_solution_2(int[] nums, int t) {
+        int n = nums.length;
+        int l = 0, r = n - 1;
+        while (l < r) {
+            int mid = l + r + 1 >> 1;
+            if (nums[mid] <= t) l = mid;
+            else r = mid - 1;
+        }
+        int ans = 0;
+        while (r >= 0 && nums[r] == t && r-- >= 0) ans++;
+        return ans;
+    }
+
+
+    public int search_solution_3(int[] nums, int target) {
+        int leftIdx = binarySearch(nums, target, true);
+        int rightIdx = binarySearch(nums, target, false) - 1;
+        if (leftIdx <= rightIdx && rightIdx < nums.length && nums[leftIdx] == target && nums[rightIdx] == target) {
+            return rightIdx - leftIdx + 1;
+        }
+        return 0;
+    }
+
+    public int binarySearch(int[] nums, int target, boolean lower) {
+        int left = 0, right = nums.length - 1, ans = nums.length;
+        while (left <= right) {
+            int mid = (left + right) / 2;
+            if (nums[mid] > target || (lower && nums[mid] >= target)) {
+                right = mid - 1;
+                ans = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return ans;
+    }
+
+    public int search_solution_4(int[] nums, int target) {
+        return helper(nums, target) - helper(nums, target - 1);
+    }
+
+    int helper(int[] nums, int tar) {
+        int i = 0, j = nums.length - 1;
+        while (i <= j) {
+            int m = (i + j) / 2;
+            if (nums[m] <= tar) i = m + 1;
+            else j = m - 1;
+        }
+        return i;
     }
 }
 ```
-
-
-
-
-
-
 
 #### [剑指 Offer 53 - II. 0～n-1中缺失的数字](https://leetcode.cn/problems/que-shi-de-shu-zi-lcof/)
 
 ```
 一个长度为n-1的递增排序数组中的所有数字都是唯一的，并且每个数字都在范围0～n-1之内。在范围0～n-1内的n个数字中有且只有一个数字不在该数组中，请找出这个数字。
 
-
+ 
 
 示例 1:
 
 输入: [0,1,3]
 输出: 2
-示例2:
+示例 2:
 
 输入: [0,1,2,3,4,5,6,7,9]
 输出: 8
-
+ 
 
 限制：
 
@@ -554,89 +967,159 @@ class Solution {
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-
-
 ```JAVA
-class Solution {
-    public int missingNumber(int[] nums) {
+import java.util.HashSet;
+import java.util.Set;
 
+/*
+[剑指 Offer 53 - II. 0～n-1中缺失的数字](https://leetcode.cn/problems/que-shi-de-shu-zi-lcof/)
+
+一个长度为n-1的递增排序数组中的所有数字都是唯一的，并且每个数字都在范围0～n-1之内。在范围0～n-1内的n个数字中有且只有一个数字不在该数组中，请找出这个数字。
+
+示例 1:
+输入: [0,1,3]
+输出: 2
+
+ */
+public class O53n2 {
+    public static void main(String[] args) {
+
+    }
+
+    public int missingNumber_solution_1(int[] nums) {
+        int ret = -1;
+        int n = nums.length;
+        Set<Integer> set = new HashSet<>();
+        for (int num : nums) set.add(num);
+
+        for (int i = 0; i <= n; i++) {
+            if(!set.contains(i)){
+                ret = i;
+                break;
+            }
+        }
+
+        return ret;
+    }
+
+    public int missingNumber_solution_2(int[] nums) {
+        int n = nums.length;
+        for (int i = 0; i < n; i++) {
+            if(nums[i] != i){
+                return i;
+            }
+        }
+        return n;
+    }
+
+    public int missingNumber_solution_3(int[] nums) {
+        int xor = 0;
+        for (int i = 0; i <= nums.length; i++) {
+            xor ^= i;
+        }
+
+        for (int num : nums) {
+            xor ^= num;
+        }
+        return xor;
+    }
+
+    public int missingNumber_solution_4(int[] nums) {
+        int n = nums.length;
+        int sum = n * (n - 1) / 2;
+        for (int num : nums) {
+            sum -= num;
+        }
+        return sum;
+    }
+
+    public int missingNumber_solution_5(int[] nums) {
+        int i = 0, j = nums.length - 1;
+        while(i <= j) {
+            int m = (i + j) / 2;
+            if(nums[m] == m) i = m + 1;
+            else j = m - 1;
+        }
+        return i;
     }
 }
 ```
-
-
-
-
-
-
 
 #### [剑指 Offer 57. 和为s的两个数字](https://leetcode.cn/problems/he-wei-sde-liang-ge-shu-zi-lcof/)
 
 ```
 输入一个递增排序的数组和一个数字s，在数组中查找两个数，使得它们的和正好是s。如果有多对数字的和等于s，则输出任意一对即可。
 
-
+ 
 
 示例 1：
 
 输入：nums = [2,7,11,15], target = 9
 输出：[2,7] 或者 [7,2]
 示例 2：
-
 输入：nums = [10,26,30,31,47,60], target = 40
 输出：[10,30] 或者 [30,10]
-
+ 
 
 限制：
 
 1 <= nums.length <= 10^5
-1 <= nums[i]<= 10^6
+1 <= nums[i] <= 10^6
 
 来源：力扣（LeetCode）
 链接：https://leetcode.cn/problems/he-wei-sde-liang-ge-shu-zi-lcof
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-
-
 ```JAVA
-class Solution {
-    public int[] twoSum(int[] nums, int target) {
+import java.util.Arrays;
+/*
+[剑指 Offer 57. 和为s的两个数字](https://leetcode.cn/problems/he-wei-sde-liang-ge-shu-zi-lcof/)
+输入：nums = [2,7,11,15], target = 9
+输出：[2,7] 或者 [7,2]
+ */
+public class O57 {
 
+    public static void main(String[] args) {
+        O57 o57 = new O57();
+        System.out.println(Arrays.toString(o57.twoSum(new int[]{2, 7, 11, 15}, 9)));
+    }
+
+    public int[] twoSum(int[] nums, int target) {
+        int i = 0, j = nums.length - 1;
+        while(i < j) {
+            int s = nums[i] + nums[j];
+            if(s < target) i++;
+            else if(s > target) j--;
+            else return new int[] { nums[i], nums[j] };
+        }
+        return new int[0];
     }
 }
+
 ```
-
-
-
-
-
-
-
-
 
 #### [剑指 Offer 58 - I. 翻转单词顺序](https://leetcode.cn/problems/fan-zhuan-dan-ci-shun-xu-lcof/)
 
 ```
 输入一个英文句子，翻转句子中单词的顺序，但单词内字符的顺序不变。为简单起见，标点符号和普通字母一样处理。例如输入字符串"I am a student. "，则输出"student. a am I"。
 
-
+ 
 
 示例 1：
-
 输入: "the sky is blue"
 输出:"blue is sky the"
+
 示例 2：
-
 输入: " hello world! "
-输出:"world! hello"
+输出: "world! hello"
 解释: 输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。
+
 示例 3：
-
-输入: "a good  example"
-输出:"example good a"
+输入: "a good   example"
+输出: "example good a"
 解释: 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。
-
+ 
 
 说明：
 
@@ -649,36 +1132,91 @@ class Solution {
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-
-
 ```JAVA
-class Solution {
-    public String reverseWords(String s) {
+import java.util.ArrayList;
+import java.util.List;
 
+/*
+[剑指 Offer 58 - I. 翻转单词顺序](https://leetcode.cn/problems/fan-zhuan-dan-ci-shun-xu-lcof/)
+示例 1：
+输入: "the sky is blue"
+输出:"blue is sky the"
+
+示例 2：
+输入: " hello world! "
+输出:"world! hello"
+解释: 输入字符串可以在前面或者后面包含多余的空格，但是反转后的字符不能包括。
+
+示例 3：
+输入: "a good  example"
+输出:"example good a"
+解释: 如果两个单词间有多余的空格，将反转后单词间的空格减少到只含一个。
+ */
+public class O58n1 {
+    public static void main(String[] args) {
+        O58n1 o58n1 = new O58n1();
+        System.out.println(o58n1.reverseWords_solution_2("the sky is blue"));
+        System.out.println(o58n1.reverseWords_solution_2(" hello world! "));
+        System.out.println(o58n1.reverseWords_solution_2("a good  example"));
+    }
+
+    public String reverseWords_solution_1(String s) {
+        List<String> list = new ArrayList<>();
+        StringBuilder tmp = new StringBuilder();
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if(s.charAt(i) == ' '){
+                if(tmp.length() > 0){
+                    list.add(reverse(tmp.toString()));
+                    tmp = new StringBuilder();
+                }else{
+                    continue;
+                }
+            }else{
+                tmp.append(s.charAt(i));
+            }
+        }
+        if(tmp.length() > 0) list.add(reverse(tmp.toString()));
+        return String.join(" ", list);
+    }
+
+    private String reverse(String s){
+        char[] ret = new char[s.length()];
+        for (int i = 0; i < ret.length; i++) {
+            ret[i] = s.charAt(s.length() - i - 1);
+        }
+        return new String(ret);
+    }
+
+    public String reverseWords_solution_2(String s) {
+        s = s.trim();
+        int i = s.length() - 1, j = i;
+        StringBuilder stringBuilder = new StringBuilder();
+        while (i >= 0) {
+            while(i>=0 && s.charAt(i) != ' ') i--;
+            stringBuilder.append(s, i+1, j+1).append(" ");
+            while(i>=0 && s.charAt(i) == ' ') i--;
+            j = i;
+        }
+        return stringBuilder.toString();
     }
 }
 ```
-
-
-
-
 
 #### [剑指 Offer 58 - II. 左旋转字符串](https://leetcode.cn/problems/zuo-xuan-zhuan-zi-fu-chuan-lcof/)
 
 ```
 字符串的左旋转操作是把字符串前面的若干个字符转移到字符串的尾部。请定义一个函数实现字符串左旋转操作的功能。比如，输入字符串"abcdefg"和数字2，该函数将返回左旋转两位得到的结果"cdefgab"。
 
-
+ 
 
 示例 1：
-
 输入: s = "abcdefg", k = 2
-输出:"cdefgab"
+输出: "cdefgab"
+
 示例 2：
-
 输入: s = "lrloseumgh", k = 6
-输出:"umghlrlose"
-
+输出: "umghlrlose"
+ 
 
 限制：
 
@@ -688,34 +1226,72 @@ class Solution {
 ```
 
 ```JAVA
-class Solution {
-    public String reverseLeftWords(String s, int n) {
+/*
+[剑指 Offer 58 - II. 左旋转字符串](https://leetcode.cn/problems/zuo-xuan-zhuan-zi-fu-chuan-lcof/)
 
+示例 1：
+输入: s = "abcdefg", k = 2
+输出:"cdefgab"
+
+示例 2：
+输入: s = "lrloseumgh", k = 6
+输出:"umghlrlose"
+
+ */
+public class O58n2 {
+    public static void main(String[] args) {
+        O58n2 o58n1 = new O58n2();
+        System.out.println(o58n1.reverseLeftWords_solution_3("abcdefg", 2));
+        System.out.println(o58n1.reverseLeftWords_solution_3("lrloseumgh", 6));
     }
+
+    public String reverseLeftWords_solution_1(String s, int n) {
+        return s.substring(n) + s.substring(0, n);
+    }
+  
+    public String reverseLeftWords_solution_2(String s, int n) {
+        char[] ret = new char[s.length()];
+        for (int i = 0, index = n; i < s.length(); i++, index = (index+1)%s.length()) {
+            ret[i] = s.charAt(index);
+        }
+        return new String(ret);
+    }
+
+    public String reverseLeftWords_solution_3(String s, int n) {
+        char[] ch = s.toCharArray();
+        reverse(ch,0,ch.length-1);
+        reverse(ch,0,ch.length-1-n);
+        reverse(ch,ch.length-n,ch.length-1);
+        return new String(ch);
+    }
+  
+    public void reverse(char[] arr,int start,int end){
+        char tem;
+        while (end > start){
+            tem = arr[start];
+            arr[start] = arr[end];
+            arr[end] = tem;
+            start++;
+            end--;
+        }
+    }
+  
 }
 ```
-
-
-
-
-
-
 
 #### [面试题61. 扑克牌中的顺子](https://leetcode.cn/problems/bu-ke-pai-zhong-de-shun-zi-lcof/)
 
 ```
 从若干副扑克牌中随机抽 5 张牌，判断是不是一个顺子，即这5张牌是不是连续的。2～10为数字本身，A为1，J为11，Q为12，K为13，而大、小王为 0 ，可以看成任意数字。A 不能视为 14。
 
+ 
 
-
-示例1:
-
+示例 1:
 输入: [1,2,3,4,5]
 输出: True
+ 
 
-
-示例2:
-
+示例 2:
 输入: [0,0,1,2,5]
 输出: True
 
@@ -725,33 +1301,79 @@ class Solution {
 ```
 
 ```java
-class Solution {
-    public boolean isStraight(int[] nums) {
+import java.util.Arrays;
 
+/*
+[面试题61. 扑克牌中的顺子](https://leetcode.cn/problems/bu-ke-pai-zhong-de-shun-zi-lcof/)
+
+示例1:
+输入: [1,2,3,4,5]
+输出: True
+
+
+示例2:
+输入: [0,0,1,2,5]
+输出: True
+
+ */
+public class O61 {
+    public static void main(String[] args) {
+        O61 o58n1 = new O61();
+        System.out.println(o58n1.isStraight_solution_1(new int[]{1,2,3,4,5}));
+        System.out.println(o58n1.isStraight_solution_1(new int[]{0,0,1,2,5}));
+    }
+
+    public boolean isStraight_solution_1(int[] nums) {
+        Arrays.sort(nums);
+        int zeroCount = 0;
+        for (int i = 0; i < nums.length - 1; i++) {
+            if(nums[i] == 0) {
+                zeroCount++;
+            } else {
+                if(nums[i] == nums[i+1]) return false;
+                zeroCount -= (nums[i+1] - nums[i] - 1);
+            }
+        }
+        return zeroCount >= 0;
+    }
+
+    public boolean isStraight_solution_2(int[] nums) {
+        Arrays.sort(nums);  // 从小到大排序
+        int cha = 0;
+        for(int i=nums.length -1; i>=0; i--){
+            if(nums[i] == 0){
+                continue;
+            } else if(i > 0 && nums[i-1]!=0){  // 保证不越界，且0不参与相减
+                int tmp_cha = nums[i] - nums[i-1];
+                if(tmp_cha == 0){  // 如果相邻的两个数相等，则不是顺子
+                    return false;
+                }
+                cha += tmp_cha;
+            }
+        }
+
+        if(cha <= 4){  // 4是nums的长度减1
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
 ```
 
-
-
-
-
-
-
-
-
 #### [剑指 Offer 66. 构建乘积数组](https://leetcode.cn/problems/gou-jian-cheng-ji-shu-zu-lcof/)
 
 ```
-给定一个数组 A[0,1,…,n-1]，请构建一个数组 B[0,1,…,n-1]，其中B[i] 的值是数组 A 中除了下标 i 以外的元素的积, 即B[i]=A[0]×A[1]×…×A[i-1]×A[i+1]×…×A[n-1]。不能使用除法。
+给定一个数组 A[0,1,…,n-1]，请构建一个数组 B[0,1,…,n-1]，其中 B[i] 的值是数组 A 中除了下标 i 以外的元素的积, 即 B[i]=A[0]×A[1]×…×A[i-1]×A[i+1]×…×A[n-1]。不能使用除法。
 
-
+ 
 
 示例:
 
 输入: [1,2,3,4,5]
 输出: [120,60,40,30,24]
-
+ 
 
 提示：
 
@@ -762,14 +1384,89 @@ a.length <= 100000
 ```
 
 ```JAVA
-class Solution {
-    public int[] constructArr(int[] a) {
+import java.util.Arrays;
 
+/*
+[剑指 Offer 66. 构建乘积数组](https://leetcode.cn/problems/gou-jian-cheng-ji-shu-zu-lcof/)
+
+示例:
+输入: [1,2,3,4,5]
+输出: [120,60,40,30,24]
+
+ */
+public class O66 {
+    public static void main(String[] args) {
+        O66 o66 = new O66();
+        System.out.println(Arrays.toString(o66.constructArr_solution_4(new int[]{1, 2, 3, 4, 5})));
+    }
+
+    public int[] constructArr_solution_1(int[] a) {
+        int[] ret = new int[a.length];
+        for (int i = 0; i < a.length; i++) {
+            int sum = 1;
+            for (int j = 0; j < a.length; j++) {
+                if(i == j) continue;
+                sum *= a[j];
+            }
+            ret[i] = sum;
+        }
+        return ret;
+    }
+
+    public int[] constructArr_solution_2(int[] a) {
+        if(a == null || a.length == 0 || a.length == 1) return a;
+
+        int[] ret = new int[a.length];
+
+        int[] left = new int[a.length];
+        left[0] = 1;
+        int[] right = new int[a.length];
+        right[a.length - 1] = 1;
+
+        for (int i = 1; i < a.length; i++) {
+            left[i] = left[i - 1] * a[i - 1];
+        }
+
+        for (int i = a.length - 2; i >= 0; i--) {
+            right[i] = right[i + 1] * a[i + 1];
+        }
+
+        for (int i = 0; i < a.length; i++) {
+            ret[i] = left[i] * right[i];
+        }
+
+        return ret;
+    }
+
+    public int[] constructArr_solution_3(int[] a) {
+        if(a == null || a.length == 0 || a.length == 1) return a;
+
+        int[] ret = new int[a.length];
+        ret[0] = 1;
+        for (int i = 1; i < a.length; i++) {
+            ret[i] = ret[i - 1] * a[i - 1];
+        }
+
+        int tmp = 1;
+        for(int i = a.length - 2; i>=0; i--){
+            tmp *= a[i+1];
+            ret[i] *= tmp;
+        }
+
+        return ret;
+    }
+
+    public int[] constructArr_solution_4(int[] a) {
+        int n = a.length;
+        int[] B = new int[n];
+        for (int i = 0, product = 1; i < n; product *= a[i], i++)       /* 从左往右累乘 */
+            B[i] = product;
+        for (int i = n - 1, product = 1; i >= 0; product *= a[i], i--)  /* 从右往左累乘 */
+            B[i] *= product;
+        return B;
     }
 }
 ```
-
-
 
 #### [面试题67. 把字符串转换成整数](https://leetcode.cn/problems/ba-zi-fu-chuan-zhuan-huan-cheng-zheng-shu-lcof/)
 
@@ -781,7 +1478,36 @@ class Solution {
 注意：假如该字符串中的第一个非空格字符不是一个有效整数字符、字符串为空或字符串仅包含空白字符时，则你的函数不需要进行转换。
 在任何情况下，若函数不能进行有效的转换时，请返回 0。
 说明：
-假设我们的环境只能存储 32 位大小的有符号整数，那么其数值范围为[−231, 231− 1]。如果数值超过这个范围，请返回 INT_MAX (231− 1) 或INT_MIN (−231) 。
+假设我们的环境只能存储 32 位大小的有符号整数，那么其数值范围为 [−231,  231 − 1]。如果数值超过这个范围，请返回  INT_MAX (231 − 1) 或 INT_MIN (−231) 。
+示例 1:
+
+输入: "42"
+输出: 42
+示例 2:
+
+输入: "   -42"
+输出: -42
+解释: 第一个非空白字符为 '-', 它是一个负号。
+     我们尽可能将负号与后面所有连续出现的数字组合起来，最后得到 -42 。
+     
+示例 3:
+输入: "4193 with words"
+输出: 4193
+解释: 转换截止于数字 '3' ，因为它的下一个字符不为数字。
+
+示例 4:
+输入: "words and 987"
+输出: 0
+解释: 第一个非空字符是 'w', 但它不是数字或正、负号。
+     因此无法执行有效的转换。
+     
+```
+
+```java
+import java.util.HashMap;
+import java.util.Map;
+/*
+[面试题67. 把字符串转换成整数](https://leetcode.cn/problems/ba-zi-fu-chuan-zhuan-huan-cheng-zheng-shu-lcof/)
 示例1:
 
 输入: "42"
@@ -792,7 +1518,7 @@ class Solution {
 输出: -42
 解释: 第一个非空白字符为 '-', 它是一个负号。
     我们尽可能将负号与后面所有连续出现的数字组合起来，最后得到 -42 。
-    
+
 示例3:
 输入: "4193 with words"
 输出: 4193
@@ -803,20 +1529,121 @@ class Solution {
 输出: 0
 解释: 第一个非空字符是 'w', 但它不是数字或正、负号。
      因此无法执行有效的转换。
-     
-```
+ */
+public class O67 {
 
-```java
-class Solution {
-    public int strToInt(String str) {
+    public static void main(String[] args) {
+        O67 o67 = new O67();
+        System.out.println(o67.strToInt_solution_3("4193 with words"));
+    }
+    public int strToInt_solution_1(String str) {
+        str = str.trim();
+        boolean isPositive = true;
+        boolean isValid = true;
+        int ret = 0;
+        boolean flag = false;
+        char c = str.charAt(0);
+        int bdy = Integer.MAX_VALUE / 10;
+        if (Character.isDigit(c)) {
+            ret = c - '0';
+            flag = true;
+        } else if (c == '+') {
+            isPositive = true;
+        } else if (c == '-') {
+            isPositive = false;
+        } else {
+            isValid = false;
+        }
 
+        for (int i = 1; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (Character.isDigit(ch)) {
+                if (ret > bdy || ret == bdy && ch > '7') {
+                    return isPositive ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+                }
+                ret = ret * 10 + (ch - '0');
+                flag = true;
+            } else {
+                if (flag) {
+                    break;
+                } else {
+                    isValid = false;
+                    break;
+                }
+            }
+
+        }
+        return isValid ? isPositive ? ret : -ret : 0;
+    }
+    public int strToInt_solution_2(String str) {
+        Automaton automaton = new Automaton();
+        int length = str.length();
+        for (int i = 0; i < length; ++i) {
+            automaton.get(str.charAt(i));
+        }
+        return (int) (automaton.sign * automaton.ans);
+    }
+    class Automaton {
+        public int sign = 1;
+        public long ans = 0;
+        private String state = "start";
+        private Map<String, String[]> table = new HashMap<String, String[]>() {{
+            put("start", new String[]{"start", "signed", "in_number", "end"});
+            put("signed", new String[]{"end", "end", "in_number", "end"});
+            put("in_number", new String[]{"end", "end", "in_number", "end"});
+            put("end", new String[]{"end", "end", "end", "end"});
+        }};
+
+        public void get(char c) {
+            state = table.get(state)[get_col(c)];
+            if ("in_number".equals(state)) {
+                ans = ans * 10 + c - '0';
+                ans = sign == 1 ? Math.min(ans, (long) Integer.MAX_VALUE) : Math.min(ans, -(long) Integer.MIN_VALUE);
+            } else if ("signed".equals(state)) {
+                sign = c == '+' ? 1 : -1;
+            }
+        }
+
+        private int get_col(char c) {
+            if (c == ' ') {
+                return 0;
+            }
+            if (c == '+' || c == '-') {
+                return 1;
+            }
+            if (Character.isDigit(c)) {
+                return 2;
+            }
+            return 3;
+        }
+    }
+
+    public int strToInt_solution_3(String str) {
+        if(str == null || str.length() == 0) return 0;
+        int sign = 1;
+        int ans = 0;
+        int bndry = Integer.MAX_VALUE / 10;
+        int i = 0;
+        while(i < str.length()){
+            if(str.charAt(i) == ' '){
+                i++;
+            }else{
+                break;
+            }
+        }
+        if(i >= str.length()) return 0;
+        if(str.charAt(i) == '-') sign = -1;
+        if(str.charAt(i) == '-' || str.charAt(i) == '+') i++;
+        for (int j = i; j < str.length(); j++) {
+            if(str.charAt(j) < '0' || str.charAt(j) > '9') break;
+            if(ans > bndry || ans == bndry && str.charAt(j) > '7')
+                return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+            ans = ans * 10 + (str.charAt(j) - '0');
+        }
+        return sign * ans;
     }
 }
 ```
-
-
-
-
 
 ### 栈和队列(5)
 
