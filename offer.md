@@ -1672,18 +1672,77 @@ public class O67 {
 
 
 ```JAVA
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
+import java.util.ArrayList;
+import java.util.List;
+
+/*
+[剑指 Offer 06. 从尾到头打印链表](https://leetcode.cn/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof/)
+示例 1：
+
+输入：head = [1,3,2]
+输出：[2,3,1]
+
  */
-class Solution {
-    public int[] reversePrint(ListNode head) {
+public class O06 {
+    public static void main(String[] args) {
 
     }
+
+    public int[] reversePrint_solution_1(ListNode head) {
+        ListNode node = head;
+        int count = 0;
+        while (node != null) {
+            ++count;
+            node = node.next;
+        }
+        int[] nums = new int[count];
+        node = head;
+        for (int i = count - 1; i >= 0; --i) {
+            nums[i] = node.val;
+            node = node.next;
+        }
+        return nums;
+    }
+
+    List<Integer>list =new ArrayList<>();
+    void traverse(ListNode head)
+    {
+        if(head==null)
+        {
+            return;
+        }
+        traverse(head.next);
+        list.add(head.val);
+
+    }
+    public int[] reversePrint_solution_2(ListNode head) {
+        traverse(head);
+        int[]res=new int[list.size()];
+        for(int i=0;i<list.size();i++)
+        {
+            res[i]=list.get(i);
+        }
+        return res;
+    }
+
+    public int[] reversePrint_solution_3(ListNode head) {
+        List<Integer> resList = reverse(head);
+        return resList.stream().mapToInt(Integer::valueOf).toArray();
+    }
+
+    private List<Integer> reverse(ListNode head) {
+        if (null == head) {
+            return new ArrayList<>();
+        }
+        List<Integer> res = reverse(head.next);
+        res.add(head.val);
+        return res;
+    }
+}
+class ListNode{
+    int val;
+    ListNode next;
+    ListNode(int x) {val = x;}
 }
 ```
 
@@ -1723,27 +1782,42 @@ class Solution {
 
 
 ```JAVA
-class CQueue {
+import java.util.Deque;
+import java.util.LinkedList;
 
-    public CQueue() {
+/*
+[剑指 Offer 09. 用两个栈实现队列](https://leetcode.cn/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof/)
 
-    }
-    
-    public void appendTail(int value) {
-
-    }
-    
-    public int deleteHead() {
+ */
+public class O09 {
+    public static void main(String[] args) {
 
     }
 }
+class CQueue {
+    Deque<Integer> stack1;
+    Deque<Integer> stack2;
 
-/**
- * Your CQueue object will be instantiated and called as such:
- * CQueue obj = new CQueue();
- * obj.appendTail(value);
- * int param_2 = obj.deleteHead();
- */
+    public CQueue() {
+        // Stack底层使用数组，扩容比较耗时
+        stack1 = new LinkedList<>();
+        stack2 = new LinkedList<>();
+    }
+
+    public void appendTail(int value) {
+        stack1.push(value);
+    }
+
+    public int deleteHead() {
+        if (stack2.isEmpty()) {
+            if (stack1.isEmpty()) return -1;
+            while (!stack1.isEmpty()) {
+                stack2.push(stack1.pop());
+            }
+            return stack2.pop();
+        } else return stack2.pop();
+    }
+}
 ```
 
 
@@ -1782,45 +1856,94 @@ minStack.min();   --> 返回 -2.
 
 
 ```JAVA
-class MinStack {
+import java.util.Deque;
+import java.util.LinkedList;
 
-    /** initialize your data structure here. */
-    public MinStack() {
+/*
+[剑指 Offer 30. 包含min函数的栈](https://leetcode.cn/problems/bao-han-minhan-shu-de-zhan-lcof/)
 
-    }
-    
-    public void push(int x) {
-
-    }
-    
-    public void pop() {
-
-    }
-    
-    public int top() {
-
-    }
-    
-    public int min() {
+ */
+public class O30 {
+    public static void main(String[] args) {
 
     }
 }
+class MinStack {
+    private Node head;
 
-/**
- * Your MinStack object will be instantiated and called as such:
- * MinStack obj = new MinStack();
- * obj.push(x);
- * obj.pop();
- * int param_3 = obj.top();
- * int param_4 = obj.min();
- */
+    public MinStack() {
+
+    }
+
+    public void push(int x) {
+
+        if (head == null)
+            head = new Node(x, x, null);
+        else
+            head = new Node(x, Math.min(head.min, x), head);
+    }
+
+    public void pop() {
+        head = head.next;
+    }
+
+    public int top() {
+
+        return head.val;
+    }
+
+    public int min() {
+
+        return head.min;
+    }
+
+    private class Node {
+
+        int val;
+        int min;
+        Node next;
+
+        public Node(int val, int min, Node next) {
+
+            this.val = val;
+            this.min = min;
+            this.next = next;
+        }
+    }
+}
+class MinStack2 {
+    Deque<Integer> xStack;
+    Deque<Integer> minStack;
+
+    public MinStack2() {
+        xStack = new LinkedList<Integer>();
+        minStack = new LinkedList<Integer>();
+        minStack.push(Integer.MAX_VALUE);
+    }
+
+    public void push(int x) {
+        xStack.push(x);
+        minStack.push(Math.min(minStack.peek(), x));
+    }
+
+    public void pop() {
+        xStack.pop();
+        minStack.pop();
+    }
+
+    public int top() {
+        return xStack.peek();
+    }
+
+    public int min() {
+        return minStack.peek();
+    }
+}
 ```
 
 
 
 #### [剑指 Offer 59 - I. 滑动窗口的最大值](https://leetcode.cn/problems/hua-dong-chuang-kou-de-zui-da-zhi-lcof/)
-
-
 
 ```
 给定一个数组 nums 和滑动窗口的大小 k，请找出所有滑动窗口里的最大值。
@@ -1853,51 +1976,112 @@ class MinStack {
 
 
 ```JAVA
-logo
-学习
-题库
-竞赛
-讨论
-求职
-商店
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.PriorityQueue;
 
-0
+/*
+[剑指 Offer 59 - I. 滑动窗口的最大值](https://leetcode.cn/problems/hua-dong-chuang-kou-de-zui-da-zhi-lcof/)
 
-题目描述
-评论 (943)
-题解 (1.7k)
-提交记录
-剑指 Offer 59 - I. 滑动窗口的最大值
-给定一个数组 nums 和滑动窗口的大小 k，请找出所有滑动窗口里的最大值。
+ */
+public class O59n1 {
 
-示例:
+    public static void main(String[] args) {
+        O59n1 o59n1 = new O59n1();
+        o59n1.maxSlidingWindow_solution_4(new int[]{1, 3, -1, -3, 5, 3, 6, 7}, 3);
+    }
+    public int[] maxSlidingWindow_solution_1(int[] nums, int k) {
+        if(nums == null || nums.length == 0) {
+            return new int[0];
+        }
+        int[] res = new int[nums.length - k + 1];
+        Deque<Integer> queue = new ArrayDeque<>();
+        for(int i = 0, j = 0; i < nums.length; i++) {
+            if(!queue.isEmpty() && i - queue.peek() >= k) {
+                queue.poll();
+            }
+            while(!queue.isEmpty() && nums[i] > nums[queue.peekLast()]) {
+                queue.pollLast();
+            }
+            queue.offer(i);
+            if(i >= k - 1) {
+                res[j++] = nums[queue.peek()];
+            }
+        }
 
-输入: nums = [1,3,-1,-3,5,3,6,7], 和 k = 3
-输出: [3,3,5,5,6,7] 
-解释: 
+        return res;
+    }
 
-  滑动窗口的位置                最大值
----------------               -----
-[1  3  -1] -3  5  3  6  7       3
- 1 [3  -1  -3] 5  3  6  7       3
- 1  3 [-1  -3  5] 3  6  7       5
- 1  3  -1 [-3  5  3] 6  7       5
- 1  3  -1  -3 [5  3  6] 7       6
- 1  3  -1  -3  5 [3  6  7]      7
- 
+    public int[] maxSlidingWindow_solution_2(int[] nums, int k) {
+        // 第三次提交，对第二种暴力遍历窗口的方法，小加速，成功（用时+内存：97%，72%）
+        // 加速原理：每次滑动窗口向右移动时，判断
+        // a. 新加入的值 是否比上一个窗口最大值大，若是，则直接返回 新加入的值
+        // b. 待移除的值 是否比上一个窗口最大值小，若是，则返回 上一窗口最大值
+        if(k==0)return new int[0];
+        int ans[] = new int[nums.length-k+1];   // 记录每一窗口的最大值
+        for(int i=0;i+k-1<nums.length;i++){
+            if(i>0 && nums[i+k-1]>ans[i-1])ans[i] = nums[i+k-1];    // 新值比上一窗口最大值大，返回 新值
+            else if(i>0 && nums[i-1]<ans[i-1])ans[i] = ans[i-1];    // 旧值比上一窗口最大值小，返回 上一窗口最大值
+            else{   // 遍历滑动窗口，找到最大值
+                int max = Integer.MAX_VALUE+1;
+                for(int j=i;j<i+k;j++){
+                    max = Math.max(max,nums[j]);
+                    ans[i] = max;
+                }
+            }
+        }
+        return ans;
+    }
 
-提示：
+    public int[] maxSlidingWindow_solution_3(int[] nums, int k) {
+        int []res = new int[nums.length-k+1];
+        if(k > nums.length || k < 1 || nums.length == 0) {
+            return new int[0];
+        }
+        PriorityQueue<Integer> heap = new PriorityQueue<>((o1, o2) -> o2 - o1); /* 大顶堆 */
+        for(int i=0;i<k;i++) {
+            heap.add(nums[i]);
+        }
+        res[0] = heap.peek();
+        for(int i=0,j=i+k;j<nums.length;i++,j++) { /* 维护一个大小为 size 的大顶堆 */
+            heap.remove(nums[i]);
+            heap.add(nums[j]);
+            res[i + 1] = heap.peek();
+        }
+        return res;
+    }
 
-你可以假设 k 总是有效的，在输入数组 不为空 的情况下，1 ≤ k ≤ nums.length。
+    public int[] maxSlidingWindow_solution_4(int[] nums, int k) {
+        int n = nums.length;
+        int[] prefixMax = new int[n];
+        int[] suffixMax = new int[n];
+        for (int i = 0; i < n; ++i) {
+            if (i % k == 0) {
+                prefixMax[i] = nums[i];
+            }
+            else {
+                prefixMax[i] = Math.max(prefixMax[i - 1], nums[i]);
+            }
+        }
+        for (int i = n - 1; i >= 0; --i) {
+            if (i == n - 1 || (i + 1) % k == 0) {
+                suffixMax[i] = nums[i];
+            } else {
+                suffixMax[i] = Math.max(suffixMax[i + 1], nums[i]);
+            }
+        }
 
-注意：本题与主站 239 题相同：https://leetcode-cn.com/problems/sliding-window-maximum/
+        int[] ans = new int[n - k + 1];
+        for (int i = 0; i <= n - k; ++i) {
+            ans[i] = Math.max(suffixMax[i], prefixMax[i + k - 1]);
+        }
+        return ans;
+    }
+
+}
 ```
 
-
-
 #### [面试题59 - II. 队列的最大值](https://leetcode.cn/problems/dui-lie-de-zui-da-zhi-lcof/)
-
-
 
 ```
 请定义一个队列并实现函数 max_value 得到队列里的最大值，要求函数max_value、push_back 和 pop_front 的均摊时间复杂度都是O(1)。
@@ -1931,32 +2115,112 @@ logo
 
 
 ```JAVA
-class MaxQueue {
+import java.util.Deque;
+import java.util.Queue;
+import java.util.LinkedList;
 
-    public MaxQueue() {
+/*
+[面试题59 - II. 队列的最大值](https://leetcode.cn/problems/dui-lie-de-zui-da-zhi-lcof/)
 
-    }
-    
-    public int max_value() {
-
-    }
-    
-    public void push_back(int value) {
-
-    }
-    
-    public int pop_front() {
+ */
+public class O59n2 {
+    public static void main(String[] args) {
 
     }
 }
+class MaxQueue {
+    Queue<Integer> q;
+    Deque<Integer> d;
 
-/**
- * Your MaxQueue object will be instantiated and called as such:
- * MaxQueue obj = new MaxQueue();
- * int param_1 = obj.max_value();
- * obj.push_back(value);
- * int param_3 = obj.pop_front();
- */
+    public MaxQueue() {
+        q = new LinkedList<Integer>();
+        d = new LinkedList<Integer>();
+    }
+
+    public int max_value() {
+        if (d.isEmpty()) {
+            return -1;
+        }
+        return d.peekFirst();
+    }
+
+    public void push_back(int value) {
+        while (!d.isEmpty() && d.peekLast() < value) {
+            d.pollLast();
+        }
+        d.offerLast(value);
+        q.offer(value);
+    }
+
+    public int pop_front() {
+        if (q.isEmpty()) {
+            return -1;
+        }
+        int ans = q.poll();
+        if (ans == d.peekFirst()) {
+            d.pollFirst();
+        }
+        return ans;
+    }
+}
+
+class MaxQueue2 {
+
+    static class ListNode {
+        int val;
+        ListNode next;
+
+        public ListNode(int val) {
+            this.val = val;
+        }
+    }
+
+    ListNode head;
+    ListNode back;
+    ListNode max;
+
+    public MaxQueue2() {
+
+    }
+
+    public int max_value() {
+        return max == null ? -1 : max.val;
+    }
+
+    public void push_back(int value) {
+        if (back == null) {
+            back = new ListNode(value);
+            head = back;
+            max = back;
+            return;
+        }
+        back.next = new ListNode(value);
+        back = back.next;
+        if (max != null && back.val > max.val) {
+            max = back;
+        }
+    }
+
+    public int pop_front() {
+        if (head == null) return -1;
+        ListNode res = head;
+        head = head.next;
+        if (res == back) { // 最后一个节点
+            back = null;
+        }
+        if (res == max) { // 头节点刚好是最大值
+            // 更新最大值
+            ListNode p = head;
+            max = p;
+            while (p != null) {
+                if (p.val > max.val)
+                    max = p;
+                p = p.next;
+            }
+        }
+        return res.val;
+    }
+}
 ```
 
 
