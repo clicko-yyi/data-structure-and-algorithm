@@ -2229,8 +2229,6 @@ class MaxQueue2 {
 
 #### [剑指 Offer 03. 数组中重复的数字](https://leetcode.cn/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof/)
 
-
-
 ```
 找出数组中重复的数字。
 
@@ -2253,19 +2251,90 @@ class MaxQueue2 {
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-
-
 ```JAVA
-class Solution {
-    public int findRepeatNumber(int[] nums) {
+package offer.map;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+/*
+剑指 Offer 03. 数组中重复的数字
+https://leetcode.cn/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof/
+在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。
+
+示例 1：
+输入：
+[2, 3, 1, 0, 2, 5, 3]
+输出：2 或 3
+ */
+public class O03 {
+
+    public static void main(String[] args) {
+        O03 o03 = new O03();
+        System.out.println(o03.findRepeatNumber_solution_3(new int[]{2, 3, 1, 0, 2, 5, 3}));
     }
+
+    public int findRepeatNumber_solution_1(int[] nums) {
+        for(int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if(nums[i] == nums[j]) {
+                    return nums[i];
+                }
+            }
+        }
+        return -1;
+    }
+
+    public int findRepeatNumber_solution_2(int[] nums) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
+        }
+
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if(entry.getValue() > 1) {
+                return entry.getKey();
+            }
+        }
+        return -1;
+    }
+
+    public int findRepeatNumber_solution_3(int[] nums) {
+        Set<Integer> set = new HashSet<>();
+        for (int i = 0; i < nums.length; i++) {
+            if(set.contains(nums[i])) {
+                return nums[i];
+            }
+            set.add(nums[i]);
+        }
+        return -1;
+    }
+
+    public int findRepeatNumber_solution_4(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
+            while (nums[i] != i) {
+                if (nums[nums[i]] == nums[i]) {
+                    return nums[i];
+                }
+
+                swap(nums, i, nums[i]);
+            }
+        }
+
+        return -1;
+    }
+
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
 }
+
 ```
-
-
-
-
 
 #### [剑指 Offer 48. 最长不含重复字符的子字符串](https://leetcode.cn/problems/zui-chang-bu-han-zhong-fu-zi-fu-de-zi-zi-fu-chuan-lcof/)
 
@@ -2301,31 +2370,84 @@ s.length <= 40000
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-
-
 ```JAVA
-class Solution {
-    public int lengthOfLongestSubstring(String s) {
-        char[] array = s.toCharArray();
+package offer.map;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+/*
+剑指 Offer 48. 最长不含重复字符的子字符串
+https://leetcode.cn/problems/zui-chang-bu-han-zhong-fu-zi-fu-de-zi-zi-fu-chuan-lcof/
+请从字符串中找出一个最长的不包含重复字符的子字符串，计算该最长子字符串的长度。
+输入: "abcabcbb"
+输出: 3
+解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
+ */
+public class O48 {
+
+    public static void main(String[] args) {
+        O48 o48 = new O48();
+        System.out.println(o48.lengthOfLongestSubstring_solution_3("abcabcbb"));
+    }
+
+    public int lengthOfLongestSubstring_solution_1(String s) {
+        char[] charArray = s.toCharArray();
+        int ret = 0;
         Set<Character> set = new HashSet<>();
-        int i = 0, j = 0, ret = 0;
-        while(j < array.length){
-            while(set.contains(array[j])){
-                set.remove(array[i--]);
+        for (int i = 0; i < charArray.length; i++) {
+            for (int j = i; j < charArray.length; j++) {
+                if(set.contains(charArray[j])) {
+                    break;
+                }
+                set.add(charArray[j]);
             }
-            set.add(array[j++]);
-            ret = Math.max(ret, j - i)
+            ret = Math.max(ret, set.size());
+            set.clear();
+        }
+        return ret;
+    }
+
+    public int lengthOfLongestSubstring_solution_2(String s) {
+        char[] charArray = s.toCharArray();
+        int ret = 0;
+        int left = 0, right = 0;
+        Set<Character> set = new HashSet<>();
+        while(right < charArray.length) {
+            while (set.contains(charArray[right])) {
+                set.remove(charArray[left]);
+                left++;
+            }
+            set.add(charArray[right]);
+            right++;
+            ret = Math.max(ret, set.size());
+        }
+        return ret;
+    }
+
+    public int lengthOfLongestSubstring_solution_3(String s) {
+        Map<Character, Integer> map = new HashMap<>();
+        char[] charArray = s.toCharArray();
+        int left = 0, right = 0;
+        int ret = 0;
+        while(right < charArray.length){
+            if(map.containsKey(charArray[right])) {
+                int recentPos = map.get(charArray[right]) + 1;
+                if(recentPos >= left) {
+                    left = recentPos;
+                }
+            }
+            map.put(charArray[right], right);
+            right++;
+            ret = Math.max(ret, right - left);
         }
         return ret;
     }
 }
+
 ```
-
-
-
-
-
-
 
 #### [剑指 Offer 50. 第一个只出现一次的字符](https://leetcode.cn/problems/di-yi-ge-zhi-chu-xian-yi-ci-de-zi-fu-lcof/)
 
@@ -2353,23 +2475,99 @@ class Solution {
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-
-
 ```JAVA
-class Solution {
-    public char firstUniqChar(String s) {
+package offer.map;
 
+
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+/*
+剑指 Offer 50. 第一个只出现一次的字符
+https://leetcode.cn/problems/di-yi-ge-zhi-chu-xian-yi-ci-de-zi-fu-lcof/
+
+在字符串 s 中找出第一个只出现一次的字符。如果没有，返回一个单空格。 s 只包含小写字母。
+示例 1:
+输入：s = "abaccdeff"
+输出：'b'
+ */
+public class O50 {
+
+    public static void main(String[] args) {
+        O50 o50 = new O50();
+        System.out.println(o50.firstUniqChar_solution_3("abaccdeff"));
+    }
+
+    public char firstUniqChar_solution_1(String s) {
+        char[] charArray = s.toCharArray();
+        for (int i = 0; i < charArray.length; i++) {
+            boolean flag = true;
+            for (int j = 0; j < charArray.length; j++) {
+                if (i != j && charArray[i] == charArray[j]) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) {
+                return charArray[i];
+            }
+        }
+        return ' ';
+    }
+
+    public char firstUniqChar_solution_2(String s) {
+        char[] charArray = s.toCharArray();
+        Map<Character, Integer> map = new LinkedHashMap<>();
+        for (char c : charArray) {
+            map.put(c, map.getOrDefault(c, 0) + 1);
+        }
+
+        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+            if (entry.getValue() == 1) {
+                return entry.getKey();
+            }
+        }
+        return ' ';
+    }
+
+    public char firstUniqChar_solution_3(String s) {
+        Map<Character, Boolean> map = new HashMap<>();
+        char[] arr = s.toCharArray();
+        for (char c : arr) {
+            map.put(c, !map.containsKey(c));
+        }
+        for (char c : arr) {
+            if (map.get(c)) {
+                return c;
+            }
+        }
+        return ' ';
+    }
+
+    public char firstUniqChar_solution_4(String s) {
+        int n = s.length();
+        if (n == 0) return ' ';
+        int first, last, ans = 50001;
+        for (int i = 0; i < 26; i++) {
+            char ch = (char) ('a' + i);
+            first = s.indexOf(ch);
+            if (first != -1) {
+                last = s.lastIndexOf(ch);
+                if (first == last) {
+                    ans = ans > first ? first : ans;
+                }
+            }
+        }
+        return ans == 50001 ? ' ' : s.charAt(ans);
     }
 }
+
 ```
 
 ### 链表(5)
 
-{18，22，24，25，52}
-
 #### [剑指 Offer 18. 删除链表的节点](https://leetcode.cn/problems/shan-chu-lian-biao-de-jie-dian-lcof/)
-
-11
 
 ```
 给定单向链表的头指针和一个要删除的节点的值，定义一个函数删除该节点。
@@ -2412,17 +2610,81 @@ class Solution {
  * }
  */
 class Solution {
-    public ListNode deleteNode(ListNode head, int val) {
+	public static void main(String[] args) {
+        int[] array = new int[] {5, 1, 9};
+        ListNode current = new ListNode(4);
+        ListNode head = current;
+        for (int x : array) {
+            current.next = new ListNode(x);
+            current = current.next;
+        }
+        O18 o18 = new O18();
+        ListNode newHead = o18.deleteNode_solution_1(head, 4);
 
+        current = newHead;
+        while (current != null) {
+            System.out.println(current.val);
+            current = current.next;
+        }
+    }
+
+    public ListNode deleteNode_solution_1(ListNode head, int val) {
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+
+        ListNode current = head;
+        ListNode pre = dummy;
+
+        while (current != null) {
+            if(current.val == val) {
+                pre.next = current.next;
+            }
+            pre = pre.next;
+            current = current.next;
+        }
+        return dummy.next;
+    }
+
+    public ListNode deleteNode_solution_2(ListNode head, int val) {
+        if (head == null) {
+            return head;
+        }
+
+        if (head.val == val) {
+            return head.next;
+        }
+
+        ListNode pre = head;
+        ListNode cur = head.next;
+        while (cur != null) {
+            if(cur.val == val){
+                pre.next = cur.next;
+                cur.next = null;
+            }
+            pre = pre.next;
+            cur = cur.next;
+        }
+        return head;
+    }
+
+    public ListNode deleteNode_solution_3(ListNode head, int val) {
+        if(head == null)
+            return head;
+        if(head.val == val)
+            return head.next;
+        head.next = deleteNode_solution_3(head.next , val);
+        return head;
+    }
+
+    static class ListNode {
+        int val;
+        ListNode next;
+        public ListNode(int x) { val = x; }
     }
 }
 ```
 
-111
-
 #### [剑指 Offer 22. 链表中倒数第k个节点](https://leetcode.cn/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof/)
-
-11
 
 ```
 输入一个链表，输出该链表中倒数第k个节点。为了符合大多数人的习惯，本题从1开始计数，即链表的尾节点是倒数第1个节点。
@@ -2442,31 +2704,85 @@ class Solution {
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-
-
 ```JAVA
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
- */
-class Solution {
-    public ListNode getKthFromEnd(ListNode head, int k) {
 
+/*
+[剑指 Offer 22. 链表中倒数第k个节点](https://leetcode.cn/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof/)
+输入一个链表，输出该链表中倒数第k个节点。为了符合大多数人的习惯，本题从1开始计数，即链表的尾节点是倒数第1个节点。
+
+例如，一个链表有 6 个节点，从头节点开始，它们的值依次是 1、2、3、4、5、6。这个链表的倒数第 3 个节点是值为 4 的节点。
+示例：
+给定一个链表: 1->2->3->4->5, 和 k = 2.
+返回链表 4->5.
+
+ */
+public class O22 {
+
+    public static void main(String[] args) {
+        int[] array = new int[]{5, 1, 9};
+        ListNode current = new ListNode(4);
+        ListNode head = current;
+        for (int x : array) {
+            current.next = new ListNode(x);
+            current = current.next;
+        }
+        O22 o22 = new O22();
+        ListNode newHead = o22.getKthFromEnd_solution_2(head, 10);
+
+        while (newHead != null) {
+            System.out.println(newHead.val);
+            newHead = newHead.next;
+        }
+
+    }
+
+    public ListNode getKthFromEnd_solution_1(ListNode head, int k) {
+        ListNode pre = head;
+        ListNode cur = head;
+        try {
+            int i = 0;
+            while (i < k) {
+                cur = cur.next;
+                i++;
+            }
+
+            while (cur != null) {
+                cur = cur.next;
+                pre = pre.next;
+            }
+        } catch (Exception e) {
+            return null;
+        }
+        return pre;
+    }
+
+
+    public ListNode getKthFromEnd_solution_2(ListNode head, int k) {
+        ListNode frontNode = head;
+        ListNode behindNode = head;
+        while (frontNode != null && k > 0) {
+            frontNode = frontNode.next;
+            k--;
+        }
+        while (frontNode != null) {
+            frontNode = frontNode.next;
+            behindNode = behindNode.next;
+        }
+        return behindNode;
+    }
+
+    static class ListNode {
+        int val;
+        ListNode next;
+
+        public ListNode(int x) {
+            val = x;
+        }
     }
 }
 ```
 
-111
-
-
-
 #### [剑指 Offer 24. 反转链表](https://leetcode.cn/problems/fan-zhuan-lian-biao-lcof/)
-
-11
 
 ```
 定义一个函数，输入一个链表的头节点，反转该链表并输出反转后链表的头节点。
@@ -2488,31 +2804,77 @@ class Solution {
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-
-
 ```JAVA
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
+/*
+[剑指 Offer 24. 反转链表](https://leetcode.cn/problems/fan-zhuan-lian-biao-lcof/)
+定义一个函数，输入一个链表的头节点，反转该链表并输出反转后链表的头节点。
+示例:
+输入: 1->2->3->4->5->NULL
+输出: 5->4->3->2->1->NULL
  */
-class Solution {
-    public ListNode reverseList(ListNode head) {
+public class O24 {
+    public static void main(String[] args) {
+        int[] array = new int[] {5, 1, 9};
+        ListNode current = new ListNode(4);
+        ListNode head = current;
+        for (int x : array) {
+            current.next = new ListNode(x);
+            current = current.next;
+        }
+        O24 o24 = new O24();
+        ListNode newHead = o24.reverseList_solution_1(head);
 
+        current = newHead;
+        while (current != null) {
+            System.out.println(current.val);
+            current = current.next;
+        }
+    }
+
+    public ListNode reverseList_solution_1(ListNode head) {
+        LinkedList<ListNode> stack = new LinkedList<>();
+        stack.push(null);
+
+        ListNode current = head;
+        while (current != null) {
+            stack.push(current);
+            current = current.next;
+        }
+
+        ListNode cur = stack.pop();
+        ListNode newHead = cur;
+        while (!stack.isEmpty()) {
+            cur.next = stack.pop();
+            cur = cur.next;
+        }
+
+        return newHead;
+    }
+
+    public ListNode reverseList_solution_2(ListNode head) {
+        if(head == null){
+            return head;
+        }
+        ListNode pre = null;
+        ListNode cur = head;
+        while(cur != null){
+            ListNode temp = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = temp;
+        }
+        return pre;
+    }
+
+    static class ListNode {
+        int val;
+        ListNode next;
+        public ListNode(int x) { val = x; }
     }
 }
 ```
 
-111
-
-
-
 #### [剑指 Offer 25. 合并两个排序的链表](https://leetcode.cn/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/)
-
-11
 
 ```
 输入两个递增排序的链表，合并这两个链表并使新链表中的节点仍然是递增排序的。
@@ -2530,31 +2892,55 @@ class Solution {
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-
-
 ```JAVA
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
- */
-class Solution {
-    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
 
+/*
+[剑指 Offer 25. 合并两个排序的链表](https://leetcode.cn/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/)
+输入两个递增排序的链表，合并这两个链表并使新链表中的节点仍然是递增排序的。
+示例1：
+输入：1->2->4, 1->3->4
+输出：1->1->2->3->4->4
+ */
+public class O25 {
+    public static void main(String[] args) {
+
+    }
+
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode dummy = new ListNode(-1);
+        ListNode cur = dummy;
+        ListNode cur1 = l1;
+        ListNode cur2 = l2;
+
+        while (cur1 != null && cur2 != null) {
+            if (cur1.val < cur2.val) {
+                cur.next = cur1;
+                cur1 = cur1.next;
+            } else {
+                cur.next = cur2;
+                cur2 = cur2.next;
+            }
+            cur = cur.next;
+        }
+
+        if(cur1 != null) cur.next = cur1;
+        if(cur2 != null) cur.next = cur2;
+
+        return dummy.next;
+    }
+
+    static class ListNode {
+        int val;
+        ListNode next;
+
+        public ListNode(int x) {
+            val = x;
+        }
     }
 }
 ```
 
-111
-
-
-
 #### [剑指 Offer 52. 两个链表的第一个公共节点](https://leetcode.cn/problems/liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof/)
-
-11
 
 ```
 输入两个链表，找出它们的第一个公共节点。
@@ -2562,15 +2948,10 @@ class Solution {
 如下面的两个链表：
 
 
-
 在节点 c1 开始相交。
 
 
-
 示例 1：
-
-
-
 输入：intersectVal = 8, listA = [4,1,8,4,5], listB = [5,0,1,8,4,5], skipA = 2, skipB = 3
 输出：Reference of the node with value = 8
 输入解释：相交节点的值为 8 （注意，如果两个列表相交则不能为 0）。从各自的表头开始算起，链表 A 为 [4,1,8,4,5]，链表 B 为 [5,0,1,8,4,5]。在 A 中，相交节点前有 2 个节点；在 B 中，相交节点前有 3 个节点。
@@ -2608,23 +2989,55 @@ class Solution {
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-
-
 ```JAVA
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) {
- *         val = x;
- *         next = null;
- *     }
- * }
+import java.util.HashSet;
+import java.util.Set;
+
+/*
+[剑指 Offer 52. 两个链表的第一个公共节点](https://leetcode.cn/problems/liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof/)
+输入两个链表，找出它们的第一个公共节点。
+如下面的两个链表：在节点 c1 开始相交。
+示例 1：
+输入：intersectVal = 8, listA = [4,1,8,4,5], listB = [5,0,1,8,4,5], skipA = 2, skipB = 3
+输出：Reference of the node with value = 8
+输入解释：相交节点的值为 8 （注意，如果两个列表相交则不能为 0）。从各自的表头开始算起，链表 A 为 [4,1,8,4,5]，链表 B 为 [5,0,1,8,4,5]。在 A 中，相交节点前有 2 个节点；在 B 中，相交节点前有 3 个节点。
  */
-class Solution {
-    ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        
+public class O52 {
+    public static void main(String[] args) {
+
+    }
+
+    public ListNode getIntersectionNode_solution_1(ListNode headA, ListNode headB) {
+        Set<ListNode> visited = new HashSet<ListNode>();
+        ListNode temp = headA;
+        while (temp != null) {
+            visited.add(temp);
+            temp = temp.next;
+        }
+        temp = headB;
+        while (temp != null) {
+            if (visited.contains(temp)) {
+                return temp;
+            }
+            temp = temp.next;
+        }
+        return null;
+    }
+    public ListNode getIntersectionNode_solution_2(ListNode headA, ListNode headB) {
+        ListNode A = headA, B = headB;
+        while (A != B) {
+            A = A != null ? A.next : headB;
+            B = B != null ? B.next : headA;
+        }
+        return A;
+    }
+    static class ListNode {
+        int val;
+        ListNode next;
+
+        public ListNode(int x) {
+            val = x;
+        }
     }
 }
 ```
